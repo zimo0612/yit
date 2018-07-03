@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {Button} from 'antd';
 
 class Personal extends React.Component {
     constructor(props, context) {
@@ -8,7 +9,7 @@ class Personal extends React.Component {
 
     render() {
         return <div>
-            PERSONAL
+            <Button>登录</Button>
         </div>
     }
 }

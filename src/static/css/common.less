@@ -9,9 +9,11 @@ html {
 #root {
   margin: 0 auto;
   max-width: 750px;
+  overflow: hidden;
 }
 /*SEARCH*/
 .iptTopBox{
+  box-sizing: border-box;
   padding: .2rem .3rem;
   width: 100%;
   background: #fff;
@@ -19,9 +21,15 @@ html {
   z-index: 9999;
   top: 0;
 
-  .ant-input:not(:last-child){
-    background: #f3f5f5;
-    color: #999999;
+  .ant-input-search{
+    box-sizing: border-box;
+    width: 6.9rem;
+    margin: 0 auto;
+
+    .ant-input:not(:last-child){
+      background: #f3f5f5;
+      color: #999999;
+    }
   }
 
 }
