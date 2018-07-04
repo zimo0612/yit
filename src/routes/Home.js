@@ -123,15 +123,15 @@ class Home extends React.Component {
                 </div>
                 <Row className='limitTime'>
                     <Col span={8}>
-                        <NavLink to={'/Home'} exact activeClassName={'active'}><span>7月3日 10:00</span>
+                        <NavLink to={'/Home'} exact><span>7月3日 10:00</span>
                             <div><span>已经开抢</span></div>
                         </NavLink>
                     </Col>
                     <Col span={8}><NavLink to={'/Home/tomorrow'} activeClassName={'active'}><span>7月3日 10:00</span>
                         <div><span>已经开抢</span></div>
                     </NavLink></Col>
-                    <Col span={8} className={'limitTime-l'} activeClassName={'active'}><NavLink
-                        to={'/Home/AfterTomorrow'}><span>7月3日 10:00</span>
+                    <Col span={8}><NavLink
+                        to={'/Home/AfterTomorrow'}  activeClassName={'active'}><span>7月3日 10:00</span>
                         <div><span>已经开抢</span></div>
                     </NavLink></Col>
                 </Row>
