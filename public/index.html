@@ -6,6 +6,23 @@
 
     <title>一条生活馆</title>
   </head>
+  <script>
+      ;(function () {
+          function computed() {
+              let HTML = document.documentElement,
+                  winW = HTML.clientWidth,
+                  desW = 750;
+              if (winW > desW) {
+                  HTML.style.fontSize = '100px'
+              }
+              HTML.style.fontSize = winW / 750 * 100+'px';//写在HTML中单独编写的代码。不能出现{}，例如：不能使用模板字符串，否则webpack编译不了
+          }
+
+          computed();
+          window.addEventListener("resize", computed, false)
+      })()
+
+  </script>
   <body>
     <div id="root"></div>
 
