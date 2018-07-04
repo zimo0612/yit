@@ -1,11 +1,14 @@
 import React from 'react';
 import {connect} from 'react-redux';
+
 import {Row, Col, Carousel} from 'antd';
 import '../static/css/Home.less'
 import {Switch, Link, Route, NavLink} from 'react-router-dom'
 import Today from './Home/Today'
 import Tomorrow from './Home/Tomorrow'
 import AfterTomorrow from './Home/AfterTomorrow'
+
+import SearchTop from '../component/SearchTop'
 
 class Home extends React.Component {
     constructor(props, context) {
@@ -14,6 +17,7 @@ class Home extends React.Component {
 
     render() {
         return <div className={'HomeBox'}>
+            <SearchTop/>
             <Row className={'cmsEight'}>
                 <Col span={6}>
                     <a href="">
