@@ -20,15 +20,12 @@ import Home from './routes/Home';
 import Personal from './routes/Personal';
 import Category from './routes/Category';
 import ShopCart from './routes/ShopCart';
-
+import NavBottom from './component/NavBottom';
 
 ReactDOM.render(<Provider store={store}>
     <HashRouter>
         <LocaleProvider locale={zh_CN}>
             <div>
-                {/*SEARCH*/}
-                {/*<Search/>*/}
-
                 {/*MAIN=>ROUTE*/}
                 <main className='container'>
                     <Switch>
@@ -41,7 +38,7 @@ ReactDOM.render(<Provider store={store}>
                 </main>
 
                 {/*FOOTER*/}
-                {/*<NavBottom/>*/}
+                <NavBottom/>
             </div>
         </LocaleProvider>
     </HashRouter>

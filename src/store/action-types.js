@@ -1,1 +1,5 @@
+
 export const QUERY_USER_INFO='QUERY_USER_INFO';
+
+export const PERSONAL_QUERY_BASE = "PERSONAL_QUERY_BASE";
+

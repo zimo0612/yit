@@ -20,3 +20,4 @@ export function userInfo() {
 export  function out() {
     return axios.get("/personal/out")
 }
+
