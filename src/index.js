@@ -20,6 +20,7 @@ import Home from './routes/Home';
 import Personal from './routes/Personal';
 import Category from './routes/Category';
 import ShopCart from './routes/ShopCart';
+import Detail from './routes/Detail';
 
 
 ReactDOM.render(<Provider store={store}>
@@ -36,6 +37,7 @@ ReactDOM.render(<Provider store={store}>
                         <Route path='/category' component={Category}/>
                         <Route path='/personal' component={Personal}/>
                         <Route path='/shopcart' component={ShopCart}/>
+                        <Route path='/detail' component={Detail}/>
                         <Redirect to='/home'/>
                     </Switch>
                 </main>
