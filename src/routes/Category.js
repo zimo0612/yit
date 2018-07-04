@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import SearchTop from '../component/SearchTop';
 
 class Category extends React.Component {
     constructor(props, context) {
@@ -7,9 +8,12 @@ class Category extends React.Component {
     }
 
     render() {
-        return <div>
-            CATEGORY
-        </div>
+        return <section>
+            <SearchTop/>
+            <div className="categoryBox">
+                分类
+            </div>
+        </section>
     }
 }
 

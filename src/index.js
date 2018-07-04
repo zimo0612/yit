@@ -21,16 +21,11 @@ import Personal from './routes/Personal';
 import Category from './routes/Category';
 import ShopCart from './routes/ShopCart';
 import NavBottom from './component/NavBottom';
-import SearchTop from './component/SearchTop';
-
 
 ReactDOM.render(<Provider store={store}>
     <HashRouter>
         <LocaleProvider locale={zh_CN}>
             <div>
-                {/*SEARCH*/}
-                <SearchTop/>
-
                 {/*MAIN=>ROUTE*/}
                 <main className='container'>
                     <Switch>

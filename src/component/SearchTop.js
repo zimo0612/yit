@@ -12,6 +12,7 @@ class SearchTop extends React.Component {
             <Search
                 placeholder="搜索一万件好东西"
                 onSearch={value => console.log(value)}
+                style={{height:32}}
             />
         </div>
     }
