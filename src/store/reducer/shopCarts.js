@@ -1,7 +1,11 @@
 import * as TYPES from '../action-types';
 
 let INIT_STATE = {
-    baseInfo: null
+    baseInfo: null,
+    shopCarts:{
+        unpay:[],
+        pay:[]
+    }
 };
 export default function shopCarts(state = INIT_STATE, action) {
     state = JSON.parse(JSON.stringify(state));

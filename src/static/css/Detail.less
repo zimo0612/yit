@@ -1,0 +1,141 @@
+.DetailBox {
+  width: 100%;
+  position: relative;
+  background: #f9f9f9;
+  color: #333333;
+  font-size: .2rem;
+  .show {
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .info {
+    position: relative;
+    right: 0;
+    top: 0;
+    padding: .2rem .2rem .4rem;
+
+    .info-describe {
+      padding-right: 1.4rem;
+      p {
+        margin: 0;
+      }
+      p:nth-child(1) {
+        font-size: .3rem;
+      }
+      p:nth-child(2) {
+        font-size: .24rem;
+        color: #666;
+      }
+    }
+
+    .collect {
+      position: absolute;
+      top: .2rem;
+      right: .2rem;
+      width: .9rem;
+      text-align: center;
+      font-size: .26rem;
+      padding-left: .2rem;
+      border-left: 1px solid #cccccc;
+      p {
+        margin-bottom: 0;
+        color: #666;
+      }
+    }
+
+    .price {
+      margin-top: .3rem;
+      span:nth-child(1) {
+        color: #ad0e11;
+        font-size: .24rem;
+        span {
+          font-size: .34rem;
+        }
+      }
+      span:nth-child(2) {
+        float: right;
+        color: #848484;
+      }
+    }
+
+    .VIP-price {
+      padding: .1rem .2rem;
+      background: #fffcef;
+      color: #ac8849;
+      font-size: .24rem;
+      margin: .3rem 0;
+      span:nth-child(2) {
+        float: right;
+      }
+    }
+    .log-state {
+      color: #666;
+      border-top: 1px solid #f2f2f2;
+      line-height: .5rem;
+      span:nth-child(2){
+        float: right;
+      }
+    }
+  }
+
+  .fixed-ft {
+    background: #ffffff;
+    z-index:99999;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    font-size: .24rem;
+    text-align: center;
+    height: 1rem;
+     border-top: 1px solid #dddddd;
+    .anticon{
+      padding-top: .1rem;
+      display: block;
+      font-size: .34rem;
+    }
+
+    a {
+      float: left;
+      display: block;
+      color: #666;
+      vertical-align: center;
+      text-align: center;
+      line-height: 1rem;
+      p{
+        line-height: .6rem;
+        margin:  0;
+        display:block;
+      }
+    }
+    .service {
+      width: 15%;
+      color: #ad0e11;
+    }
+    .goHome {
+      width: 15%;
+
+
+    }
+    .goShopCart {
+      width: 15%;
+
+    }
+    .take {
+      width: 27.5%;
+      margin: 0;
+      background: #333;
+      color: #ffffff;
+    }
+    .buy-it {
+      width: 27.5%;
+      margin:0;
+      background: #ad0e11;
+      color: #ffffff;
+    }
+  }
+}

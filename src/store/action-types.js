@@ -5,3 +5,9 @@ export const PERSONAL_QUERY_BASE = "PERSONAL_QUERY_BASE";
 
 
 
+
+
+export const SHOP_CART_UNPAY='SHOP_CART_UNPAY';
+
+export const SHOP_CART_PAY='SHOP_CART_PAY';
+
