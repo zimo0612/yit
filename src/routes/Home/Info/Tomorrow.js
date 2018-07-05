@@ -1,7 +1,8 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {Icon} from 'antd'
-
+import CheckMore from "../CheckMore";
+import {Link} from 'react-router-dom'
 
  class Tomorrow extends React.Component{
     constructor(props,context){
@@ -19,11 +20,11 @@ import {Icon} from 'antd'
                 </a>
             </div>
             <div className="prdMore">
-                <a href="">
+                <Link to={'/home/checkmore'}>
                     <div className={'More'}>查看更多</div>
                     <div className={'m-More'}>MORE</div>
                     <Icon type="right-circle-o" style={{color:'#ad0e11',fontSize:'16px'}}/>
-                </a>
+                </Link>
             </div>
         </div>
     }
