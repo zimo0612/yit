@@ -1,5 +1,5 @@
 import * as TYPES from '../action-types';
-import {userInfo} from '../../API/personal';
+import {userInfo,out} from '../../API/personal';
 
 
 let personal = {
@@ -11,8 +11,8 @@ let personal = {
                 result,
             })
         }
-    }
-}
+    },
 
+};
 
 export default personal;

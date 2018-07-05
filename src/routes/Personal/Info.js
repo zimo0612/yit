@@ -3,11 +3,12 @@ import {connect} from 'react-redux'
 import {Icon,Badge} from 'antd'
 import action from "../../store/action";
 import {Link} from 'react-router-dom'
+ let img = require("../../static/img/touxiang.png");
 
 class Info extends React.Component {
     constructor(props, context) {
         super(props, context);
-        this.state = {}
+
     }
      componentWillMount(){
         let {baseInfo,queryUserInfo} = this.props;
@@ -28,7 +29,7 @@ class Info extends React.Component {
                 </Link>
                     <div className='Info-main'>
                         <div className='Info-user'>
-                            <Icon type='smile-o' style={{color:"black"}}/>
+                            <img src={img} alt="" style={{width:"100%", marginTop:" -.32rem"}}/>
                         </div>
                         <div className='Info-text'>
                             <p className='Info-login'>{name}</p>

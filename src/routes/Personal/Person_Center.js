@@ -20,8 +20,15 @@ class Person_Center extends React.Component {
 
     render() {
         return <div className='Center'>
-            <div className="Center-header">
-                <div className='Center-logo' ><Icon type='smile-o'></Icon></div>
+            <div className="Center-header" onClick={()=>{
+                if (this.state.isLogin){
+                  return;
+                }
+
+            }}>
+                <div className='Center-user' style={{lineHeight:"1.8rem"}}>
+                    <Icon type='user' style={{color:"#ccc",fontSize:".8rem" ,width:"1.5rem"}}/>
+                </div>
                 <span className='Center-person'>个人信息</span>
                 <Icon type='right' className='Center-right'></Icon>
             </div>
