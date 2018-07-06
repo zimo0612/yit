@@ -22,7 +22,7 @@ class Bottom extends React.Component {
                 </div>
                 <div className={'bottom'}>
                 <span className={'I'}>
-                    <Icon type="check" className={'i'}/>
+                     <Checkbox/>
                 </span>
                     <a href="javascript:;">全部选择</a>
                     <p>合计:￥<span>00.00</span></p>

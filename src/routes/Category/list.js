@@ -51,7 +51,7 @@ class List extends React.Component {
         return <div className='listBox'>
             <div className='overall'>
                 {
-                    result.data.length===0?"暂无数据":<ul>
+                    result.data.length===0?<h3 style={{width:"100%",fontSize:".32rem"}}>没有更多数据</h3>:<ul>
                         {result.data.map((item, index) => {
                             return <li key={index}>
                                 <div className='image'>

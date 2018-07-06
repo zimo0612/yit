@@ -40,12 +40,14 @@ class Info extends React.Component {
 
 
     render() {
+
         let {topCategory, bannerData, filterProductData} = this.props;
         let s = filterProductData.slice(0);
         s.sort((a, b) => {
             return a.id - b.id;
         });
         if (topCategory.length === 0&&bannerData.length === 0&&filterProductData.length === 0) return '';
+
 
 
         return <div className={'infoBox'}>
@@ -183,7 +185,7 @@ class Info extends React.Component {
                             <a href="javascript:;">
                                 <div className={'container'}>
                                     <div>小编推荐</div>
-                                    <div>7月爱用物分享</div>
+                                    <div>爱用物分享</div>
                                 </div>
                                 <img
                                     src="http://imgcms.yit.com/cmsres/20180515/d9e2338b-dc76-4921-935c-1abdba61398c_200X200.png?imageView2/0/w/140"
@@ -222,9 +224,13 @@ class Info extends React.Component {
                 </div>
                 <div className="hotMain">
                     <ul className={'clearfix'}>
+                        <Row>
+
+
                         {topCategory.map((item, index) => {
                             let {pic, title, desc,id} = item;
-                            return <li key={index}>
+                            return <Col span={12}>
+                                <li key={index}>
                                 <Link to={{
                                     pathname:'/category/info',
                                     search:`?id=${id}`
@@ -237,9 +243,9 @@ class Info extends React.Component {
                                         src={pic}
                                         alt=""/>
                                 </Link>
-                            </li>
+                            </li></Col>
                         })}
-
+                        </Row>
                     </ul>
                 </div>
 
