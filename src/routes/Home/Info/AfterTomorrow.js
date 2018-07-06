@@ -14,7 +14,6 @@ class AfterTomorrow extends React.Component {
     render() {
         let {product} = this.props;
         if (product.length === 0) return '';
-        console.log(this.props);
         return <div className={'prd'}>
             {
                 product[2].item.map((item, index) => {

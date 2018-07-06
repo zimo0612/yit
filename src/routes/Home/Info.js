@@ -207,7 +207,7 @@ class Info extends React.Component {
                             <a href="javascript:;">
                                 <div className={'container'}>
                                     <div>母婴亲子</div>
-                                    <div>辣妈养娃必备</div>
+                                    <div>养娃必备</div>
                                 </div>
                                 <img
                                     src="http://imgcms.yit.com/cmsres/20180629/8382096d-fc81-4a79-a898-297d33aa1c52_120X120.png?imageView2/0/w/140"
@@ -229,8 +229,8 @@ class Info extends React.Component {
 
                         {topCategory.map((item, index) => {
                             let {pic, title, desc,id} = item;
-                            return <Col span={12}>
-                                <li key={index}>
+                            return <Col span={12} key={index}>
+                                <li>
                                 <Link to={{
                                     pathname:'/category/info',
                                     search:`?id=${id}`

@@ -1,6 +1,7 @@
 import React from 'react'
-import {connect} from 'react-redux'
+import {connect,} from 'react-redux'
 import {Icon} from 'antd'
+import {withRouter} from 'react-router-dom'
 
 
 class Gologin extends React.Component {
@@ -41,4 +42,4 @@ class Gologin extends React.Component {
 
 }
 
-export default connect()(Gologin)
+export default withRouter(connect()(Gologin))

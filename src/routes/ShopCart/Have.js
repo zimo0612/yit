@@ -1,11 +1,13 @@
 import React from 'react';
+import Recommend from '../../component/Recommend'
 import {Icon, Modal, Checkbox} from 'antd'
-
 import {removeShopCart} from '../../API/shopCarts'
-
 import Bottom from './Have/Bottom'
+import {withRouter} from "react-router-dom";
+import {connect} from "react-redux";
+import action from "../../store/action";
 
-export default class Have extends React.Component {
+class Have extends React.Component {
     constructor(props) {
         super(props);
 
@@ -15,9 +17,19 @@ export default class Have extends React.Component {
         }
 
     }
+    componentWillMont(){
+        let {productAry} = this.props;
+      if(productAry.length===0){
+
+      }else {
+
+      }
+    }
 
 
     render() {
+        console.log(this.props.filterProductData);
+        console.log(this.props.productAry);
         return <div>
             <div className={'allCartList'}>
                 <ul className={'list'}>
@@ -43,6 +55,7 @@ export default class Have extends React.Component {
                 </ul>
                 <Bottom ref='stand'/>
             </div>
+            <Recommend/>
         </div>
     }
 
@@ -55,12 +68,12 @@ export default class Have extends React.Component {
         })
     };
 
-
     addition = ev => {
         this.setState({
             n: this.state.n + 1,
         })
     };
+
 
 
     showDeleteConfirm = ev => {
@@ -80,3 +93,5 @@ export default class Have extends React.Component {
 
 
 }
+
+export default withRouter(connect(state => ({...state.shopCarts}), action.shopCarts)(Have));

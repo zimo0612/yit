@@ -1,7 +1,8 @@
 import * as TYPES from '../action-types';
 
 let INIT_STATE = {
-    queryData: null
+    queryData: null,
+    productAry:[]
 
 };
 export default function shopCarts(state = INIT_STATE, action) {
@@ -14,6 +15,17 @@ export default function shopCarts(state = INIT_STATE, action) {
                 state.queryData = action.result.data
             }
             break;
+        case TYPES.ADD_SHOP:
+            let {productID,amount}=action;
+             state.productAry.push({
+                 productID,
+                 amount,
+             });
+             break;
+
+
+
     }
+
     return state;
 };

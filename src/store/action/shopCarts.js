@@ -11,5 +11,11 @@ let shopCarts = {
             })
         }
     },
+    addShop(state){
+        return{
+            type:TYPES.ADD_SHOP,
+
+        }
+    }
 };
 export default shopCarts;
