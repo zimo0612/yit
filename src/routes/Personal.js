@@ -16,6 +16,10 @@ class Personal extends React.Component {
             isLogin: false
         }
     }
+    async componentWillMount(){
+        let result=await checkLogin();
+        parseFloat(result.code) === 0 ? this.setState({isLogin:true}) : null;
+    }
     async componentWillReceiveProps() {
         let result = await checkLogin(),
             isLogin = parseFloat(result.code) === 0 ? true : false;

@@ -13,6 +13,7 @@ export default function personal(state = INIT_STATE, action) {
             }
             break;
 
+
     }
 
     return state;

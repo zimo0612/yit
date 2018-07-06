@@ -2,8 +2,9 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {Link,withRouter} from 'react-router-dom'
 import {Icon,Button,Form,Modal} from "antd"
-import {login} from '../../API/personal'
+import {login,userInfo} from '../../API/personal'
 import  md5 from 'blueimp-md5'
+import action from "../../store/action";
 
 class Login extends React.Component {
     constructor(props, context) {
@@ -11,15 +12,7 @@ class Login extends React.Component {
 
     }
 
-  /*  getTest=()=>{
-        let str = '';
-        let num=null;
-        while (str.length<6){
-            num = Math.floor(Math.random()*10);
-           str+=num;
-        }
-        return str;
-    };*/
+
 
      handleClick=async ()=>{
        let name = this.refs.input1.value.trim();
@@ -27,25 +20,27 @@ class Login extends React.Component {
           password=md5(password);
        if (name.length!==11||password.length===0){
            Modal.error({
-               title: '我可不是随便的人！',
-               content: '要不就是用户名，要不就是密码，你再想想！',
+               title: '我知道你不是随便的人！',
+               content: '再想想你的账号或者密码！',
            });
        } else {
            let result = await login({
                name,
                password
            });
+           this.props.queryUserInfo();
            if (result.code===0){
                this.props.history.go(-1);
 
            } else {
                Modal.error({
-                   title: '我可不是随便的人！',
-                   content: '要不就是用户名，要不就是密码，你再想想！',
+                   title: '我知道你不是随便的人！',
+                   content: '再想想你的账号或者密码！',
                });
            }
        }
      };
+
     render() {
 
         return <div className='LoginBox'>
@@ -84,4 +79,4 @@ class Login extends React.Component {
     }
 }
 
-export default withRouter(connect()(Login))
+export default withRouter(connect(state=>({...state.personal}),action.personal)(Login))
