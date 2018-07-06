@@ -10,7 +10,7 @@ class Info extends React.Component{
     constructor(props,context){
         super(props,context);
         this.state={
-            tempIndex:1,
+            tempIndex:parseFloat(Qs.parse(this.props.location.search.substr(1)).id)
         }
     }
 
