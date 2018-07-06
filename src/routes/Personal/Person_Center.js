@@ -47,7 +47,7 @@ class Person_Center extends React.Component {
                 </div>
             </div>
             {this.state.isLogin?( <div className="Center-footer" onClick={ async ()=>{
-                     await out();
+                await out();
                      this.props.history.push('/personal')
             }}>
                 退出登录

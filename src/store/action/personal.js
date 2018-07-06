@@ -11,13 +11,7 @@ let personal = {
                 result,
             })
         }
-<<<<<<< HEAD
     }
-};
-=======
-    },
->>>>>>> 7eaadffbdfa394dc6d08fd46c9071c33a99f572b
-
 };
 
 export default personal;

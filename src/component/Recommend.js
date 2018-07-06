@@ -21,6 +21,7 @@ class recommend extends React.Component {
 
 
     render() {
+
         if (!this.state.isRun) return "";
         if (this.retuls.data.length === 0) return "暂无数据";
 
@@ -53,7 +54,6 @@ class recommend extends React.Component {
 
 
             </ul>
-
         </div>
     }
 }

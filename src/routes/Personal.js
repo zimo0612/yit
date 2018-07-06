@@ -9,6 +9,7 @@ import Login from "./Personal/Login";
 import Register from "./Personal/Register";
 import Person_Center from "./Personal/Person_Center";
 import '../static/font/iconfont.css'
+import OderList from "./Personal/OderList";
 class Personal extends React.Component {
     constructor(props, context) {
         super(props, context);
@@ -37,6 +38,7 @@ class Personal extends React.Component {
                 <Route path='/personal/login' component={Login}/>
                 <Route path='/personal/register' component={Register}/>
                 <Route path='/personal/center' component={Person_Center}/>
+                <Route path='/personal/orderlist' component={OderList}/>
                 <Redirect from='/personal' to='/personal/info'/>
             </Switch>
         </section>

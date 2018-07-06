@@ -2,8 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {Icon,Badge} from 'antd'
 import {Link} from 'react-router-dom'
-import Login from "./Login";
-
+import Recommend from '../../component/Recommend'
 class Tip extends React.Component {
     constructor(props, context) {
         super(props, context);
@@ -16,7 +15,7 @@ class Tip extends React.Component {
                 <Link to='/personal/center' className='Tip-setting' >
                     <Icon type="setting"   />
                 </Link>
-                <Link to='/personal/login'>
+                <Link to='/gologin'>
                     <div className='Tip-main'>
                         <div className='Tip-user'>
                             <Icon type='user' style={{color:"#ccc"}}/>
@@ -31,16 +30,16 @@ class Tip extends React.Component {
             <div className='personal-F'>
                 <div className="personal-collection">
                     <span>收藏</span>
-               </div>
+                </div>
                 <div className="personal-foot"><span>足迹</span></div>
             </div>
             <div className='personal-oder'>
                 <ul className='personal-list'>
-                    <li><Icon type="credit-card" /><span>待付款</span></li>
-                    <li><Icon type="gift" /><span>待发货</span></li>
-                    <li><Icon type="rocket" /><span>待收货</span></li>
-                    <li><Icon type="pay-circle-o" /><span>退款/售后</span></li>
-                    <li><Icon type="profile" /><span>我的订单</span></li>
+                    <li><Link to='/gologin' style={{color:"rgba(0,0,0,.7)"}}><Icon type="credit-card" /><span>待付款</span></Link></li>
+                    <li><Link to='/gologin' style={{color:"rgba(0,0,0,.7)"}}><Icon type="gift" /><span>待发货</span></Link></li>
+                    <li><Link to='/gologin' style={{color:"rgba(0,0,0,.7)"}}><Icon type="rocket" /><span>待收货</span></Link></li>
+                    <li><Link to='/gologin' style={{color:"rgba(0,0,0,.7)"}}><Icon type="pay-circle-o" /><span>退款/售后</span></Link></li>
+                    <li><Link to='/gologin' style={{color:"rgba(0,0,0,.7)"}}><Icon type="profile" /><span>我的订单</span></Link></li>
                 </ul>
             </div>
             <div className='personal-img'>
@@ -68,9 +67,11 @@ class Tip extends React.Component {
                     <li></li>
                 </ul>
             </div>
+            <div style={{background:"#f4f4f4",width:"100%" ,height:".2rem"}}></div>
             <div><img src="http://imgcms.yit.com/cmsres/20171123/24dfe209-125c-4703-af6b-23ee2e5896f3_750X270.jpeg" alt="" style={{width:"100%"}}/></div>
             <div><img src="http://imgcms.yit.com/cmsres/20180112/1946cb8e-b59b-4dba-a7f3-039461b8b53a_750X270.png" alt="" style={{width:"100%"}}/></div>
 
+          <Recommend/>
         </div>
     }
 

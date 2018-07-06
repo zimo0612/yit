@@ -16,7 +16,6 @@ class Register extends React.Component {
         super(props, context);
         this.state = {
             code: 60,
-
         }
 
     }
@@ -29,7 +28,7 @@ class Register extends React.Component {
                 let result = await register(values);
                 if (parseFloat(result.code) === 0) {
                     this.props.queryUserInfo();
-                    this.props.history.push('/personal/info');
+                    this.props.history.go(-3);
                     return;
                 }
             }
@@ -137,7 +136,7 @@ class Register extends React.Component {
                 </FormItem>
 
                 <FormItem>
-                    <Button className='regButton' type='danger' style={{background: "red", color: "#fff"}}
+                    <Button className='regButton' type='danger' style={{background: "#ad0e11", color: "#fff"}}
                             htmlType='submit'>立即注册</Button>
                 </FormItem>
             </Form>
