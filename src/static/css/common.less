@@ -1,27 +1,39 @@
 /*IMPORT ANTD*/
 @import "~antd/dist/antd.css";
 
-/*REM*/
-html {
-  font-size: 100px; /*750:1REM=100PX*/
+html{
+  font-size: 100px;
 }
 
 #root {
   margin: 0 auto;
   max-width: 750px;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
 }
 /*SEARCH*/
 .iptTopBox{
-  padding: .2rem .3rem;
+  box-sizing: border-box;
+  padding: 20px .3rem;
   width: 100%;
+  height: .72rem;
+  max-width: 750px;
   background: #fff;
   position: fixed;
   z-index: 9999;
   top: 0;
 
-  .ant-input:not(:last-child){
-    background: #f3f5f5;
-    color: #999999;
+
+  .ant-input-search{
+    box-sizing: border-box;
+    width: 6.9rem;
+    margin: 0 auto;
+
+    .ant-input:not(:last-child){
+      background: #f3f5f5;
+      color: #999999;
+    }
+
   }
 
 }
@@ -63,5 +75,12 @@ html {
 
 /*CONTAINER*/
 .container {
-  padding: 1.12rem 0 1.08rem 0;
+  padding: 0 0 1.08rem 0;
 }
+
+/*CATEGORY-BOX*/
+.categoryBox,.homeBox {
+  padding-top: 72px;
+
+}
+

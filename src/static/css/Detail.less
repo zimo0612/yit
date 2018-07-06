@@ -1,0 +1,248 @@
+.DetailBox {
+  width: 100%;
+  position: relative;
+  background: #f9f9f9;
+  color: #333333;
+  font-size: .2rem;
+  .show {
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .info {
+    position: relative;
+    right: 0;
+    top: 0;
+    padding: .2rem .2rem .4rem;
+
+    .info-describe {
+      padding-right: 1.4rem;
+      p {
+        margin: 0;
+      }
+      p:nth-child(1) {
+        font-size: .3rem;
+      }
+      p:nth-child(2) {
+        font-size: .24rem;
+        color: #666;
+      }
+    }
+
+    .collect {
+      position: absolute;
+      top: .2rem;
+      right: .2rem;
+      width: .9rem;
+      text-align: center;
+      font-size: .26rem;
+      padding-left: .2rem;
+      border-left: 1px solid #cccccc;
+      p {
+        margin-bottom: 0;
+        color: #666;
+      }
+    }
+
+    .price {
+      margin-top: .3rem;
+      span:nth-child(1) {
+        color: #ad0e11;
+        font-size: .24rem;
+        span {
+          font-size: .34rem;
+        }
+      }
+      span:nth-child(2) {
+        float: right;
+        color: #848484;
+      }
+    }
+
+    .VIP-price {
+      padding: .1rem .2rem;
+      background: #fffcef;
+      color: #ac8849;
+      font-size: .24rem;
+      margin: .3rem 0;
+      span:nth-child(2) {
+        float: right;
+      }
+    }
+    .log-state {
+      color: #666;
+      border-top: 1px solid #f2f2f2;
+      line-height: .5rem;
+      span:nth-child(2){
+        float: right;
+      }
+    }
+  }
+
+  .fixed-ft {
+    background: #ffffff;
+    z-index:99999;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    font-size: .24rem;
+    text-align: center;
+    height: 1rem;
+     border-top: 1px solid #dddddd;
+    .anticon{
+      padding-top: .1rem;
+      display: block;
+      font-size: .34rem;
+    }
+
+    a {
+      float: left;
+      display: block;
+      color: #666;
+      vertical-align: center;
+      text-align: center;
+      line-height: 1rem;
+      p{
+        line-height: .6rem;
+        margin:  0;
+        display:block;
+      }
+    }
+    .service {
+      width: 15%;
+      color: #ad0e11;
+    }
+    .goHome {
+      width: 15%;
+
+
+    }
+    .goShopCart {
+      width: 15%;
+
+    }
+    .take {
+      width: 27.5%;
+      margin: 0;
+      background: #333;
+      color: #ffffff;
+    }
+    .buy-it {
+      width: 27.5%;
+      margin:0;
+      background: #ad0e11;
+      color: #ffffff;
+    }
+  }
+
+  .mask{
+    width: 100%;
+    display: none;
+    height: 10000px;
+    background: rgba(0,0,0,.3);
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 2222;
+
+  }
+
+  .confirm{
+     background: #ffffff;
+    width: 100%;
+    position: fixed;
+    z-index: 9999999;
+    bottom: 0;
+    left: 0;
+    .close-Btn{
+      position: absolute;
+      right: .2rem;
+      top: .2rem;
+      font-size: .4rem;
+
+    }
+
+
+    .confirm-info{
+
+      .show{
+        padding: .3rem;
+        border-bottom: 1px solid #cccccc;
+        img{
+          width: 1.7rem;
+          height: 1.7rem;
+        }
+        .price{
+          vertical-align: top;
+          display: inline-block;
+
+
+          span{
+            line-height: .3rem;
+            font-size: .26rem;
+            color: #ad0e11;
+          }
+          span:nth-child(2){
+            margin-left: .2rem;
+            font-size: .4rem;
+            line-height: .3rem;
+            color: #ad0e11;
+          }
+        }
+      }
+      .math{
+        width: 90%;
+        margin: 0 auto .3rem;
+        padding: .1rem 0;
+        border-bottom: 1px solid #cccccc;
+
+        span{
+          font-size: .3rem;
+          color: #333333;
+          height: .56rem;
+          line-height: .56rem;
+          font-weight: bold;
+        }
+        .computed{
+          display: inline-block;
+          float: right;
+          margin-right: .5rem;
+          a{
+            vertical-align: center;
+            display: inline-block;
+            width: .56rem;
+            height: .56rem;
+            line-height: .56rem;
+            text-align: center;
+            color: #999;
+
+          }
+          .number{
+            display: inline-block;
+            text-align: center;
+            font-size: .4rem;
+            width: .8rem;
+            font-weight: normal;
+
+          }
+        }
+
+      }
+    }
+    .go-shopcart{
+      display: block;
+      width: 100%;
+      text-align: center;
+      background-color: #333;
+      color: #ffffff;
+      height: 1rem;
+      line-height: 1rem;
+      font-size: .3rem;
+
+    }
+  }
+}

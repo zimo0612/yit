@@ -10,6 +10,8 @@ import action from '../store/action'
 import Info from './Category/info'
 import List from './Category/list'
 
+import SearchTop from '../component/SearchTop';
+
 
 class Category extends React.Component {
     constructor(props, context) {
@@ -24,13 +26,16 @@ class Category extends React.Component {
     }
 
     render() {
-        return <div className="categoryBox">
-            <Switch>
-                <Route path='/category/info' component={Info}/>
-                <Route path='/category/list' component={List}/>
-                <Redirect from='/category' to='/category/info'/>
-            </Switch>
-        </div>
+        return <section>
+            <SearchTop/>
+            <div className="categoryBox">
+                <Switch>
+                    <Route path='/category/info' component={Info}/>
+                    <Route path='/category/list' component={List}/>
+                    <Redirect from='/category' to='/category/info'/>
+                </Switch>
+            </div>
+        </section>
     }
 }
 

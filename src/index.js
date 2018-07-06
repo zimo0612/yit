@@ -23,14 +23,12 @@ import ShopCart from './routes/ShopCart';
 import NavBottom from './component/NavBottom';
 import SearchTop from './component/SearchTop';
 
+import Detail from './routes/Detail';
 
 ReactDOM.render(<Provider store={store}>
     <HashRouter>
         <LocaleProvider locale={zh_CN}>
             <div>
-                {/*SEARCH*/}
-                <SearchTop/>
-
                 {/*MAIN=>ROUTE*/}
                 <main className='container'>
                     <Switch>
@@ -38,6 +36,7 @@ ReactDOM.render(<Provider store={store}>
                         <Route path='/category' component={Category}/>
                         <Route path='/personal' component={Personal}/>
                         <Route path='/shopcart' component={ShopCart}/>
+                        <Route path='/detail' component={Detail}/>
                         <Redirect to='/home'/>
                     </Switch>
                 </main>
