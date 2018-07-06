@@ -11,8 +11,7 @@ let personal = {
                 result,
             })
         }
-    },
-
+    }
 };
 
 export default personal;

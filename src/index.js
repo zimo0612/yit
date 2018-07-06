@@ -20,11 +20,11 @@ import Home from './routes/Home';
 import Personal from './routes/Personal';
 import Category from './routes/Category';
 import ShopCart from './routes/ShopCart';
+import NavBottom from './component/NavBottom';
+import SearchTop from './component/SearchTop';
 
 import Detail from './routes/Detail';
-
-
-import NavBottom from './component/NavBottom';
+import Gologin from './routes/Gologin'
 
 ReactDOM.render(<Provider store={store}>
     <HashRouter>
@@ -38,6 +38,7 @@ ReactDOM.render(<Provider store={store}>
                         <Route path='/personal' component={Personal}/>
                         <Route path='/shopcart' component={ShopCart}/>
                         <Route path='/detail' component={Detail}/>
+                        <Route path='/gologin' component={Gologin}/>
                         <Redirect to='/home'/>
                     </Switch>
                 </main>

@@ -1,7 +1,11 @@
 import React from 'react';
 import {connect} from 'react-redux'
-import {Icon} from 'antd'
+import {Icon,Checkbox} from 'antd'
 
+//多选框
+const CheckboxGroup = Checkbox.Group;
+const plainOptions = ['Apple', 'Pear', 'Orange'];
+const defaultCheckedList = ['Apple', 'Orange'];
 
 class Bottom extends React.Component {
     constructor(props,context) {

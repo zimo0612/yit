@@ -1,59 +1,59 @@
 import React from 'react';
 import {connect} from 'react-redux'
 import {Icon} from 'antd'
+import {salesCart} from '../API/shopCarts'
 
 class recommend extends React.Component {
     constructor(props, context) {
         super(props, context)
+
+        this.state = {
+            isRun: false
+        }
     }
 
+    async componentDidMount() {
+        this.retuls = await salesCart();
+        this.setState({
+            isRun: true
+        })
+    }
+
+
     render() {
+
+        if (!this.state.isRun) return "";
+        if (this.retuls.data.length === 0) return "暂无数据";
+
         return <div className={'liveBox'}>
             <div className={'topBox'}>
                 <div className={'like'}>
                     <div className={'show'}></div>
-                   <div className={'xihuan'}>
-                       <Icon type="heart-o" className={'I'}/>
-                       &nbsp;&nbsp;猜你喜欢
-                   </div>
+                    <div className={'xihuan'}>
+                        <Icon type="heart-o" className={'I'}/>
+                        &nbsp;&nbsp;猜你喜欢
+                    </div>
                 </div>
             </div>
             <ul className={'ul'}>
-                <li className={'li'}>
-                    <a  href={'javascript:;'} className={'bottomBox'}>
-                        <img src='https://img01.yit.com/5/7/57ac50c8ba2d6.jpg-620.466.80' alt=""/>
-                        <div className={'item'}><h3>可自由组合的竹斗柜</h3>
-                            <p>竹子来自武夷山，自由组合可叠放，环保零甲醛，单个出售</p>
-                            <span>¥199</span>&nbsp;
-                            <span className={'span'}>¥249</span>
-                        </div>
-                        <span className={'HOT'}>¥189.05</span>
-                    </a>
-                </li>
-                <li className={'li'}>
-                    <a  href={'javascript:;'} className={'bottomBox'}>
-                        <img src='https://img01.yit.com/media/cb931168-4f8b-4cef-ae04-d603be4d8d72.jpg-620.466.80' alt=""/>
-                        <div className={'item'}><h3>可自由组合的竹斗柜</h3>
-                            <p>竹子来自武夷山，自由组合可叠放，环保零甲醛，单个出售</p>
-                            <span>¥199</span>&nbsp;
-                            <span className={'span'}>¥249</span>
-                        </div>
-                        <span className={'HOT'}>¥189.05</span>
-                    </a>
-                </li>
-                <li className={'li'}>
-                    <a  href={'javascript:;'} className={'bottomBox'}>
-                        <img src='https://img01.yit.com/5/7/57ac50c8ba2d6.jpg-620.466.80' alt=""/>
-                        <div className={'item'}><h3>可自由组合的竹斗柜</h3>
-                            <p>竹子来自武夷山，自由组合可叠放，环保零甲醛，单个出售</p>
-                            <span>¥199</span>&nbsp;
-                            <span className={'span'}>¥249</span>
-                        </div>
-                        <span className={'HOT'}>¥189.05</span>
-                    </a>
-                </li>
-            </ul>
+                {this.retuls.data.map((item, index) => {
+                    let {pic, title, desc, currentPrice, price, vPrice} = item;
 
+                    return <li className={'li'} key={index}>
+                        <a href={'javascript:;'} className={'bottomBox'}>
+                            <img src={pic} alt=""/>
+                            <div className={'item'}><h3>{title}</h3>
+                                <p>{desc}</p>
+                                <span>¥{price}</span>&nbsp;
+                                <span className={'span'}>¥{currentPrice}</span>
+                            </div>
+                            <span className={'HOT'}>¥{305}</span>
+                        </a>
+                    </li>
+                })}
+
+
+            </ul>
         </div>
     }
 }
