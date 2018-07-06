@@ -25,7 +25,12 @@ export const HOME_QUERY_KILLPRODUCT='HOME_QUERY_KILLPRODUCT';
 export const HOME_QUERY_FILTERPRODUCT='HOME_QUERY_FILTERPRODUCT';
 
 
+
 //点加入购物车之后，通知reducer往redux中存一份
 export const ADD_SHOP='ADD_SHOP';
+
+
+/*商品详情*/
+export const DETAIL_QUERY_PRODUCT = 'DETAIL_QUERY_PRODUCT';
 
 

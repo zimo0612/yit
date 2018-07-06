@@ -45,6 +45,9 @@ class Info extends React.Component {
             return a.id-b.id;
         });
 
+
+
+
         return <div className={'infoBox'}>
 
             <SearchTop/>

@@ -57,20 +57,43 @@ html {
         .left {
           display: inline-block;
           float: left;
-          width: .4rem;
-          height: .4rem;
           line-height: .4rem;
           margin-left: .2rem;
           margin-top: .8rem;
-          border-radius: 50%;
-          background: #9D0800;
-          border: 1px solid #dddddd;
 
-          i {
-            margin-left: .05rem;
+          .ant-checkbox-wrapper {
+
             text-align: center;
-            color: #ffffff;
+
+            .ant-checkbox-inner {
+              border-radius: 50%;
+              border-color: #9b9b9b !important;
+              width: .42rem;
+              height: .42rem;
+            }
+
+            .ant-checkbox-checked {
+              border-radius: 50%;
+              background-color: #9D0800;
+              border-color: #9D0800;
+
+              &:after {
+                border-radius: 50%;
+                border-color: #9D0800;
+              }
+
+              .ant-checkbox-inner {
+                border-color: #9D0800;
+                background-color: #9D0800;
+
+                &:after {
+                  width: .16rem;
+                  height: .26rem;
+                }
+              }
+            }
           }
+
         }
         .right {
           display: inline-block;
@@ -169,7 +192,7 @@ html {
             line-height: .4rem;
             margin-top: .25rem;
             margin-left: .2rem;
-            font-style:normal
+            font-style: normal
           }
         }
 
@@ -196,15 +219,39 @@ html {
         height: 1.2rem;
         line-height: 1.2rem;
         .I {
-          width: .7rem;
-          height: .7rem;
-          background: #9D0800;
-          border-radius: 50%;
-          margin-left: .3rem;
+          .ant-checkbox-wrapper {
 
-          i {
-            color: #ffffff;
+            text-align: center;
+
+            .ant-checkbox-inner {
+              border-radius: 50%;
+              border-color: #9b9b9b !important;
+              width: .4rem;
+              height: .4rem;
+            }
+
+            .ant-checkbox-checked {
+              border-radius: 50%;
+              background-color: #9D0800;
+              border-color: #9D0800;
+
+              &:after {
+                border-radius: 50%;
+                border-color: #9D0800;
+              }
+
+              .ant-checkbox-inner {
+                border-color: #9D0800;
+                background-color: #9D0800;
+
+                &:after {
+                  width: .16rem;
+                  height: .26rem;
+                }
+              }
+            }
           }
+
         }
         a {
           display: inline-block;
@@ -241,7 +288,6 @@ html {
       }
     }
   }
-
 
 }
 

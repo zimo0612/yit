@@ -5,7 +5,6 @@ import {Switch, Link, Route, NavLink,withRouter} from 'react-router-dom'
 import {Icon, Row, Col} from 'antd'
 import Home from '../Home'
 import ShopCart from '../ShopCart'
-import Buy from '../Detail/Buy'
 import {checkLogin} from "../../API/personal";
 import {addShopCart} from "../../API/shopCarts";
 import action from "../../store/action";

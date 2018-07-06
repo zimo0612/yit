@@ -14,7 +14,6 @@ class Today extends React.Component {
 
     render() {
         let {product}=this.props;
-        console.log(product);
         return <div className={'prd'}>
             {product.map((value,index)=>{
                 let {item}=value;
