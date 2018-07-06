@@ -2,63 +2,66 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {Row, Col, Carousel} from 'antd';
 import {Switch, Link, Route, NavLink} from 'react-router-dom'
-
 import AfterTomorrow from "./Info/AfterTomorrow";
 import Today from "./Info/Today";
 import Tomorrow from "./Info/Tomorrow";
 import SearchTop from '../../component/SearchTop'
+import action from '../../store/action'
 
 
- class Info extends React.Component{
-    constructor(props,context){
-        super(props,context)
+class Info extends React.Component {
+    constructor(props, context) {
+        super(props, context);
+
     }
-    render(){
+
+    componentWillMount() {
+        let {
+            topCategory, queryTopCategory,
+            bannerData, queryHomeBanner,
+            queryKillProduct, product,
+            queryFilterProduct, filterProductData,
+        } = this.props;
+        if (topCategory.length === 0) {
+            queryTopCategory();
+        }
+        if (bannerData.length === 0) {
+            queryHomeBanner();
+        }
+        if (product.length === 0) {
+            queryKillProduct();
+        }
+        if (filterProductData.length === 0) {
+            queryFilterProduct({typeId: 1});
+        }
+
+    }
+
+
+    render() {
+        let {topCategory, bannerData, product, filterProductData} = this.props;
+        let s=filterProductData.slice(0);
+        s.sort((a,b)=>{
+            return a.id-b.id;
+        })
+        console.log(s);
         return <div className={'infoBox'}>
+
             <SearchTop/>
+            {/*上分类*/}
             <Row className={'cmsEight'}>
-                <Col span={6}>
-                    <a href="">
-                        <img
-                            src="http://imgcms.yit.com/cmsres/20180515/5d9269af-d936-46f8-8037-3e137a8933b5_200X200.png"
-                            alt=""/></a>
-                    <div>家电数码</div>
-                </Col>
-                <Col span={6}>
-                    <a href="">
-                        <img
-                            src="http://imgcms.yit.com/cmsres/20180515/02e3ddaf-94cc-49b1-9a3a-bfd77fede91d_200X200.png"
-                            alt=""/></a>
-                    <div>美妆洗护</div>
-                </Col>
-                <Col span={6}>
-                    <a href="">
-                        <img
-                            src="http://imgcms.yit.com/cmsres/20180515/605e355c-c82b-49f0-8b04-91085ddb5d0a_200X200.png"
-                            alt=""/></a>
-                    <div>美食厨房</div>
-                </Col>
-                <Col span={6}>
-                    <a href="">
-                        <img
-                            src="http://imgcms.yit.com/cmsres/20180515/5a148a0b-1d57-463a-bd35-3ff642e34c41_200X200.png"
-                            alt=""/></a>
-                    <div>服饰珠宝</div>
-                </Col>
-                <Col span={6}>
-                    <a href="">
-                        <img
-                            src="http://imgcms.yit.com/cmsres/20180515/65f2720c-024c-4ad1-bb6c-018088b039aa_200X200.png"
-                            alt=""/></a>
-                    <div>居家日用</div>
-                </Col>
-                <Col span={6}>
-                    <a href="">
-                        <img
-                            src="http://imgcms.yit.com/cmsres/20180515/1c72bc97-e732-42bf-928e-280412743b62_200X200.png"
-                            alt=""/></a>
-                    <div>图书文创</div>
-                </Col>
+
+                {topCategory.map((item, index) => {
+                    let {pic, title, desc} = item;
+                    return <Col span={6} key={index}>
+                        <a href="">
+                            <img
+                                src={pic}
+                                alt={desc}/></a>
+                        <div>{title}</div>
+                    </Col>
+                })}
+
                 <Col span={6}>
                     <a href="">
                         <img
@@ -76,33 +79,18 @@ import SearchTop from '../../component/SearchTop'
 
 
             </Row>
+            {/*home banner*/}
             <Carousel autoplay className={'banner'}>
-                <div className={'slide'}>
-                    <a href=""><img
-                        src="http://imgcms.yit.com/cmsres/20180702/a620afe6-4fda-430e-9661-08e3a96d84e6_750X420.jpeg?imageView2/0/w/750"
-                        alt=""/></a>
-                </div>
-                <div className={'slide'}>
-                    <a href=""><img
-                        src="http://imgcms.yit.com/cmsres/20180701/8fb48e45-3db9-4427-ae54-946e9d52ddb6_750X420.jpeg?imageView2/0/w/750"
-                        alt=""/></a>
-                </div>
-                <div className={'slide'}>
-                    <a href=""><img
-                        src="http://imgcms.yit.com/cmsres/20180702/02f4b952-81bb-42ad-a234-0c5221497f29_750X420.jpeg?imageView2/0/w/750"
-                        alt=""/></a>
-                </div>
-                <div className={'slide'}>
-                    <a href=""><img
-                        src="http://imgcms.yit.com/cmsres/20180701/2415d6a0-4a4c-42d7-9e0c-f7980aa0f449_750X420.jpeg?imageView2/0/w/750"
-                        alt=""/></a>
-                </div>
-                <div className={'slide'}>
-                    <a href=""><img
-                        src="http://imgcms.yit.com/cmsres/20180702/31e24ace-83df-4863-b053-7d2e9cd55988_750X420.jpeg?imageView2/0/w/750"
-                        alt=""/></a>
-                </div>
+                {bannerData.map((item, index) => {
+                    let {pic} = item;
+                    return <div className={'slide'} key={index}>
+                        <a href="javascript"><img
+                            src={pic}
+                            alt=""/></a>
+                    </div>
+                })}
             </Carousel>
+            {/*广告*/}
             <div className={'cms-banner'}>
                 <a href=""><img
                     src="http://imgcms.yit.com/cmsres/20180702/020d99b1-8b61-4faa-bf8e-4047382720d2_750X182.jpeg?imageView2/2/w/750"
@@ -114,6 +102,7 @@ import SearchTop from '../../component/SearchTop'
                     src="http://imgcms.yit.com/cmsres/20180605/b5d54385-6af5-47c9-8ff7-17432a167d51_690X250.jpeg?imageView2/0/w/690"
                     alt=""/>
             </div>
+            {/*限时购*/}
             <div className={'limit'} style={{paddingBottom: '.2rem'}}>
                 <div className={'limitTitle'}>
                     <h3>限时购</h3>
@@ -128,11 +117,12 @@ import SearchTop from '../../component/SearchTop'
                     <Col span={8}><NavLink to={'/home/info/tomorrow'} activeClassName={'active'}><span>7月3日 10:00</span>
                         <div><span>已经开抢</span></div>
                     </NavLink></Col>
-                    <Col span={8}><NavLink
-                        to={'/home/info/aftertomorrow'}  activeClassName={'active'}><span>7月3日 10:00</span>
+                    <Col span={8} style={{border: 'none'}}><NavLink
+                        to={'/home/info/aftertomorrow'} activeClassName={'active'}><span>7月3日 10:00</span>
                         <div><span>已经开抢</span></div>
                     </NavLink></Col>
                 </Row>
+
                 <Switch>
                     <Route path={'/home/info'} exact component={Today}></Route>
                     <Route path={'/home/info/tomorrow'} component={Tomorrow}></Route>
@@ -140,79 +130,32 @@ import SearchTop from '../../component/SearchTop'
 
                 </Switch>
             </div>
+            {/*今日上新*/}
             <div className={'todayNew'}>
                 <div className="newTitle">
                     今日上新
                 </div>
                 <div className="item">
-                    <div className={'prdItem'}>
-                        <a href="">
-                            <img
-                                src="http://img01.yit.com/media/d069105d-f21c-46c4-8473-6a45dff8df5c.jpg?imageView2/0/w/265"
-                                alt=""/>
-                            <div className={'ellipsis'}>乾隆册封的梅菜烧饼</div>
-                            <div className={'price'}><span>¥1080</span><span>¥1280</span></div>
-                            <div className={'VIP-price'}><span>会员价</span><span>¥1026</span></div>
-                            <div className={'tagBox'}><span>前30件再减200元</span></div>
-                        </a>
-                    </div>
-                    <div className={'prdItem'}>
-                        <a href="">
-                            <img
-                                src="http://img01.yit.com/media/d069105d-f21c-46c4-8473-6a45dff8df5c.jpg?imageView2/0/w/265"
-                                alt=""/>
-                            <div className={'ellipsis'}>乾隆册封的梅菜烧饼</div>
-                            <div className={'price'}><span>¥1080</span><span>¥1280</span></div>
-                            <div className={'VIP-price'}><span>会员价</span><span>¥1026</span></div>
-                            <div className={'tagBox'}><span>前30件再减200元</span></div>
-                        </a>
-                    </div>
-                    <div className={'prdItem'}>
-                        <a href="">
-                            <img
-                                src="http://img01.yit.com/media/d069105d-f21c-46c4-8473-6a45dff8df5c.jpg?imageView2/0/w/265"
-                                alt=""/>
-                            <div className={'ellipsis'}>乾隆册封的梅菜烧饼</div>
-                            <div className={'price'}><span>¥1080</span><span>¥1280</span></div>
-                            <div className={'VIP-price'}><span>会员价</span><span>¥1026</span></div>
-                            <div className={'tagBox'}><span>前30件再减200元</span></div>
-                        </a>
-                    </div>
-                    <div className={'prdItem'}>
-                        <a href="">
-                            <img
-                                src="http://img01.yit.com/media/d069105d-f21c-46c4-8473-6a45dff8df5c.jpg?imageView2/0/w/265"
-                                alt=""/>
-                            <div className={'ellipsis'}>乾隆册封的梅菜烧饼</div>
-                            <div className={'price'}><span>¥1080</span><span>¥1280</span></div>
-                            <div className={'VIP-price'}><span>会员价</span><span>¥1026</span></div>
-                            <div className={'tagBox'}><span>前30件再减200元</span></div>
-                        </a>
-                    </div>
-                    <div className={'prdItem'}>
-                        <a href="">
-                            <img
-                                src="http://img01.yit.com/media/d069105d-f21c-46c4-8473-6a45dff8df5c.jpg?imageView2/0/w/265"
-                                alt=""/>
-                            <div className={'ellipsis'}>乾隆册封的梅菜烧饼</div>
-                            <div className={'price'}><span>¥1080</span><span>¥1280</span></div>
-                            <div className={'VIP-price'}><span>会员价</span><span>¥1026</span></div>
-                            <div className={'tagBox'}><span>前30件再减200元</span></div>
-                        </a>
-                    </div>
-                    <div className={'prdItem'}>
-                        <a href="">
-                            <img
-                                src="http://img01.yit.com/media/d069105d-f21c-46c4-8473-6a45dff8df5c.jpg?imageView2/0/w/265"
-                                alt=""/>
-                            <div className={'ellipsis'}>乾隆册封的梅菜烧饼</div>
-                            <div className={'price'}><span>¥1080</span><span>¥1280</span></div>
-                            <div className={'VIP-price'}><span>会员价</span><span>¥1026</span></div>
-                            <div className={'tagBox'}><span>前30件再减200元</span></div>
-                        </a>
-                    </div>
+                    {filterProductData.slice(0,24).map((item, index) => {
+                        let {desc, title, pic, id, price, currentPrice, vPrice} = item;
+                        if (index % 4 === 0) {
+                            return <div className={'prdItem'} key={index}>
+                                <Link to={'/detail'} id={id}>
+                                    <img
+                                        src={pic}
+                                        alt=""/>
+                                    <div className={'ellipsis'}>{title}</div>
+                                    <div className={'price'}><span>¥{price}</span><span>¥{currentPrice}</span></div>
+                                    <div className={'VIP-price'}><span>会员价</span><span>¥{vPrice}</span></div>
+                                    <div className={'tagBox'}><span>前30件再减200元</span></div>
+                                </Link>
+                            </div>
+                        }
+
+                    })}
                 </div>
             </div>
+            {/*活动精选*/}
             <div className={'activity'}>
                 <div className={'activityTitle'}>
                     活动精选
@@ -220,7 +163,7 @@ import SearchTop from '../../component/SearchTop'
                 <div className={'main clearfix'}>
                     <ul className={'clearfix'}>
                         <li>
-                            <a href="">
+                            <a href="javascript:;">
                                 <div className={'container'}>
                                     <div>限时特惠</div>
                                     <div>大家都在买</div>
@@ -231,218 +174,102 @@ import SearchTop from '../../component/SearchTop'
                             </a>
                         </li>
                         <li>
-                            <a href="">
+                            <a href="javascript:;">
                                 <div className={'container'}>
-                                    <div>限时特惠</div>
-                                    <div>大家都在买</div>
+                                    <div>小编推荐</div>
+                                    <div>7月爱用物分享</div>
                                 </div>
                                 <img
-                                    src="http://imgcms.yit.com/cmsres/20180515/85b0d297-4bc6-4b34-9358-3e2185a68dbe_200X200.png?imageView2/0/w/140"
+                                    src="http://imgcms.yit.com/cmsres/20180515/d9e2338b-dc76-4921-935c-1abdba61398c_200X200.png?imageView2/0/w/140"
                                     alt=""/>
                             </a>
                         </li>
                         <li>
-                            <a href="">
+                            <a href="javascript:;">
                                 <div className={'container'}>
-                                    <div>限时特惠</div>
-                                    <div>大家都在买</div>
+                                    <div>日用清单</div>
+                                    <div>贴心实用</div>
                                 </div>
                                 <img
-                                    src="http://imgcms.yit.com/cmsres/20180515/85b0d297-4bc6-4b34-9358-3e2185a68dbe_200X200.png?imageView2/0/w/140"
+                                    src="http://imgcms.yit.com/cmsres/20180705/0e5989ca-313d-4a17-b12e-e07ad1437589_200X200.png?imageView2/0/w/140"
                                     alt=""/>
                             </a>
                         </li>
                         <li>
-                            <a href="">
+                            <a href="javascript:;">
                                 <div className={'container'}>
-                                    <div>限时特惠</div>
-                                    <div>大家都在买</div>
+                                    <div>母婴亲子</div>
+                                    <div>辣妈养娃必备</div>
                                 </div>
                                 <img
-                                    src="http://imgcms.yit.com/cmsres/20180515/85b0d297-4bc6-4b34-9358-3e2185a68dbe_200X200.png?imageView2/0/w/140"
+                                    src="http://imgcms.yit.com/cmsres/20180629/8382096d-fc81-4a79-a898-297d33aa1c52_120X120.png?imageView2/0/w/140"
                                     alt=""/>
                             </a>
                         </li>
                     </ul>
                 </div>
             </div>
+            {/*热销榜单*/}
             <div className={'hot'}>
                 <div className="hotTitle">
                     热销榜单
                 </div>
                 <div className="hotMain">
                     <ul className={'clearfix'}>
-                        <li>
-                            <a href="">
-                                <div className={'container'}>
-                                    <div>限时特惠</div>
-                                    <div>大家都在买</div>
-                                </div>
-                                <img
-                                    src="http://imgcms.yit.com/cmsres/20180515/8e14ece8-7f07-4001-819d-0cae56dd2196_200X200.png?imageView2/0/w/140"
-                                    alt=""/>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="">
-                                <div className={'container'}>
-                                    <div>限时特惠</div>
-                                    <div>大家都在买</div>
-                                </div>
-                                <img
-                                    src="http://imgcms.yit.com/cmsres/20180515/8e14ece8-7f07-4001-819d-0cae56dd2196_200X200.png?imageView2/0/w/140"
-                                    alt=""/>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="">
-                                <div className={'container'}>
-                                    <div>限时特惠</div>
-                                    <div>大家都在买</div>
-                                </div>
-                                <img
-                                    src="http://imgcms.yit.com/cmsres/20180515/8e14ece8-7f07-4001-819d-0cae56dd2196_200X200.png?imageView2/0/w/140"
-                                    alt=""/>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="">
-                                <div className={'container'}>
-                                    <div>限时特惠</div>
-                                    <div>大家都在买</div>
-                                </div>
-                                <img
-                                    src="http://imgcms.yit.com/cmsres/20180515/8e14ece8-7f07-4001-819d-0cae56dd2196_200X200.png?imageView2/0/w/140"
-                                    alt=""/>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="">
-                                <div className={'container'}>
-                                    <div>限时特惠</div>
-                                    <div>大家都在买</div>
-                                </div>
-                                <img
-                                    src="http://imgcms.yit.com/cmsres/20180515/8e14ece8-7f07-4001-819d-0cae56dd2196_200X200.png?imageView2/0/w/140"
-                                    alt=""/>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="">
-                                <div className={'container'}>
-                                    <div>限时特惠</div>
-                                    <div>大家都在买</div>
-                                </div>
-                                <img
-                                    src="http://imgcms.yit.com/cmsres/20180515/8e14ece8-7f07-4001-819d-0cae56dd2196_200X200.png?imageView2/0/w/140"
-                                    alt=""/>
-                            </a>
-                        </li>
+                        {topCategory.map((item,index)=>{
+                            let {pic, title, desc} = item;
+                            return <li key={index}>
+                                <a href="">
+                                    <div className={'container'}>
+                                        <div>{title}榜</div>
+                                        <div>{desc}</div>
+                                    </div>
+                                    <img
+                                        src={pic}
+                                        alt=""/>
+                                </a>
+                            </li>
+                        })}
+
                     </ul>
                 </div>
 
             </div>
+            {/*为你推荐*/}
             <div className={'commodity'}>
                 <div className={'commodityTitle'}>
                     为你推荐
                 </div>
                 <div className={'container'}>
-                    <a href="" className={'detail'}>
-                        <img src="http://img01.yit.com/media/94efec00-ee75-499e-bb1a-4dda0dd0003a.jpg?imageView2/0/w/360" alt=""/>
-                        <div className={'title'}>
-                            <p>自开启防滴漏油壶</p>
-                            <span>倾倒平稳，抬手即停，2种颜色可选，不滴不漏，清洁方便，无油渍残留</span>
-                        </div>
-                        <div className={'price'}>
-                            ¥58
-                        </div>
-                        <div className={'VIP-price'}>
-                            <span>会员价</span>
-                            <span>¥55.1</span>
-                        </div>
+                    {
+                        s.map((item,index)=>{
+                        let {id,desc,pic,title,vPrice,price}=item;
+                        return <Link to={`/detail?id=${id}`} className={'detail'} key={index}>
+                            <img
+                                src={pic}
+                                alt=""/>
+                            <div className={'title'}>
+                                <p>{title}</p>
+                                <span>{desc}</span>
+                            </div>
+                            <div className={'price'}>
+                                ¥{price}
+                            </div>
+                            <div className={'VIP-price'}>
+                                <span>会员价</span>
+                                <span>¥{vPrice}</span>
+                            </div>
 
-                    </a>
-                    <a href="" className={'detail'}>
-                        <img src="http://img01.yit.com/media/94efec00-ee75-499e-bb1a-4dda0dd0003a.jpg?imageView2/0/w/360" alt=""/>
-                        <div className={'title'}>
-                            <p>自开启防滴漏油壶</p>
-                            <span>倾倒平稳，抬手即停，2种颜色可选，不滴不漏，清洁方便，无油渍残留</span>
-                        </div>
-                        <div className={'price'}>
-                            ¥58
-                        </div>
-                        <div className={'VIP-price'}>
-                            <span>会员价</span>
-                            <span>¥55.1</span>
-                        </div>
+                        </Link>
+                    })}
 
-                    </a>
-                    <a href="" className={'detail'}>
-                        <img src="http://img01.yit.com/media/94efec00-ee75-499e-bb1a-4dda0dd0003a.jpg?imageView2/0/w/360" alt=""/>
-                        <div className={'title'}>
-                            <p>自开启防滴漏油壶</p>
-                            <span>倾倒平稳，抬手即停，2种颜色可选，不滴不漏，清洁方便，无油渍残留</span>
-                        </div>
-                        <div className={'price'}>
-                            ¥58
-                        </div>
-                        <div className={'VIP-price'}>
-                            <span>会员价</span>
-                            <span>¥55.1</span>
-                        </div>
-
-                    </a>
-                    <a href="" className={'detail'}>
-                        <img src="http://img01.yit.com/media/94efec00-ee75-499e-bb1a-4dda0dd0003a.jpg?imageView2/0/w/360" alt=""/>
-                        <div className={'title'}>
-                            <p>自开启防滴漏油壶</p>
-                            <span>倾倒平稳，抬手即停，2种颜色可选，不滴不漏，清洁方便，无油渍残留</span>
-                        </div>
-                        <div className={'price'}>
-                            ¥58
-                        </div>
-                        <div className={'VIP-price'}>
-                            <span>会员价</span>
-                            <span>¥55.1</span>
-                        </div>
-
-                    </a>
-                    <a href="" className={'detail'}>
-                        <img src="http://img01.yit.com/media/94efec00-ee75-499e-bb1a-4dda0dd0003a.jpg?imageView2/0/w/360" alt=""/>
-                        <div className={'title'}>
-                            <p>自开启防滴漏油壶</p>
-                            <span>倾倒平稳，抬手即停，2种颜色可选，不滴不漏，清洁方便，无油渍残留</span>
-                        </div>
-                        <div className={'price'}>
-                            ¥58
-                        </div>
-                        <div className={'VIP-price'}>
-                            <span>会员价</span>
-                            <span>¥55.1</span>
-                        </div>
-
-                    </a>
-                    <a href="" className={'detail'}>
-                        <img src="http://img01.yit.com/media/94efec00-ee75-499e-bb1a-4dda0dd0003a.jpg?imageView2/0/w/360" alt=""/>
-                        <div className={'title'}>
-                            <p>自开启防滴漏油壶</p>
-                            <span>倾倒平稳，抬手即停，2种颜色可选，不滴不漏，清洁方便，无油渍残留</span>
-                        </div>
-                        <div className={'price'}>
-                            ¥58
-                        </div>
-                        <div className={'VIP-price'}>
-                            <span>会员价</span>
-                            <span>¥55.1</span>
-                        </div>
-
-                    </a>
 
                 </div>
 
             </div>
+
         </div>
     }
 }
 
-export default connect()(Info);
+export default connect(state => ({...state.home}), action.home)(Info);

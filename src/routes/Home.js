@@ -1,6 +1,5 @@
 import React from 'react';
 import {connect} from 'react-redux';
-
 import {Row, Col, Carousel} from 'antd';
 import '../static/css/Home.less'
 import {Switch, Link, Route, NavLink,Redirect} from 'react-router-dom'
@@ -10,6 +9,7 @@ import Tomorrow from './Home/Info/Tomorrow'
 import AfterTomorrow from './Home/Info/AfterTomorrow'
 import SearchTop from '../component/SearchTop'
 import CheckMore from './Home/CheckMore'
+
 
 class Home extends React.Component {
     constructor(props, context) {
