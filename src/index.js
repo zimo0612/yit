@@ -22,6 +22,7 @@ import Category from './routes/Category';
 import ShopCart from './routes/ShopCart';
 
 import Detail from './routes/Detail';
+import Gologin from './routes/Gologin'
 
 
 import NavBottom from './component/NavBottom';
@@ -38,6 +39,7 @@ ReactDOM.render(<Provider store={store}>
                         <Route path='/personal' component={Personal}/>
                         <Route path='/shopcart' component={ShopCart}/>
                         <Route path='/detail' component={Detail}/>
+                        <Route path='/gologin' component={Gologin}/>
                         <Redirect to='/home'/>
                     </Switch>
                 </main>

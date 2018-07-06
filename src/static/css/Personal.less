@@ -1,44 +1,5 @@
 
-.Tip-header{
-   border-bottom: 1px solid #eee;
-  .Tip-setting{
-    .anticon{
-      color: #ccc;
-    }
-    align-items:center;
-    display: flex;
-    justify-content:flex-end;
-      font-size: .5rem;
-    text-align: center;
-    padding-left: .2rem;
 
-  }
-  .Tip-main{
-    display: flex;
-    flex-direction:row;
-    .Tip-user{
-      margin: 0 0 0 .5rem;
-      text-align: center;
-      width: 1.3rem;
-      height: 1.3rem;
-      border-radius: 50%;
-      box-sizing: border-box;
-      font-size: 1rem;
-      border: 1px solid #eee;
-    }
-    .Tip-text{
-      padding: .3rem 0 0 .3rem;
-      .Tip-login{
-        font-size: .3rem;
-        margin-bottom: .1rem;
-      }
-      .Tip-vip{
-      font-size: .12rem;
-        color: #cca663;
-      }
-    }
-  }
-}
 
 .Info-header{
   background: url("https://asset.yit.com/h5/image/normal_bg.png") no-repeat;
@@ -108,14 +69,15 @@
       line-height: .5rem;
       .Info-footer1{
         padding: 0 .1rem;
+        font-size: .1rem;
       }
       .Info-footer2{
         padding: 0 .1rem;
+        font-size: .1rem;
       }
     }
   }
 }
-
 .LoginBox{
  .Login-header{
         display: flex;
@@ -194,7 +156,7 @@
       }
       .Login-Button{
         margin-top: .8rem;
-       background-color: red;
+       background-color: #ad0e11;
         text-align: center;
         border-radius: .2rem;
         span{
@@ -377,11 +339,51 @@
 
 
 
+.Tip-header{
+  border-bottom: 1px solid #eee;
+  .Tip-setting{
+    .anticon{
+      color: #ccc;
+    }
+    align-items:center;
+    display: flex;
+    justify-content:flex-end;
+    font-size: .5rem;
+    text-align: center;
+    padding-left: .2rem;
+
+  }
+  .Tip-main{
+    display: flex;
+    flex-direction:row;
+    .Tip-user{
+      margin: 0 0 0 .5rem;
+      text-align: center;
+      width: 1.3rem;
+      height: 1.3rem;
+      border-radius: 50%;
+      box-sizing: border-box;
+      font-size: 1rem;
+      border: 1px solid #eee;
+    }
+    .Tip-text{
+      padding: .3rem 0 0 .3rem;
+      .Tip-login{
+        font-size: .3rem;
+        margin-bottom: .1rem;
+      }
+      .Tip-vip{
+        font-size: .12rem;
+        color: #cca663;
+      }
+    }
+  }
+}
 .personal-F{
   background: #f4f4f4;
   display: flex;
   margin-top: .2rem;
- padding-bottom: .2rem;
+  padding-bottom: .2rem;
   .personal-collection, .personal-foot{
     background: white;
     flex-grow:1;
@@ -416,10 +418,10 @@
 }
 .personal-server{
   h2{
+    margin-left: .2rem;
     margin-top: .2rem;
     font-weight: bold;
   }
-
   ul{
     display: flex;
     justify-content: space-around;
@@ -434,5 +436,86 @@
       font-size: .4rem;
     }
   }
-
+  ul:nth-child(2){
+    border-top: 1px solid #eeeeee;
+  }
+  ul:nth-child(4){
+   margin-bottom: 0;
+  }
 }
+
+
+.ant-tabs {
+  margin-top: .7rem !important;
+}
+.ant-tabs-nav-scroll {
+  margin-left: .2rem;
+}
+.ant-tabs-ink-bar {
+  background-color: red;
+}
+.ant-tabs-nav .ant-tabs-tab-active {
+  color: red;
+}
+.ant-tabs-nav .ant-tabs-tab:hover {
+   color: red;
+}
+
+.GoLoginBox{
+  overflow: hidden;
+  .GoLogin-close{
+    float: right;
+    padding-top: .2rem;
+    padding-right: .2rem;
+    i{
+      font-size: .5rem;
+
+    }
+  }
+  .GoLogin-main{
+    padding-top: 1rem;
+  }
+  .GoLogin-title{
+    width: 100%;
+    text-align: center;
+    padding-top: .3rem;
+     h2{
+     margin-bottom: 0;
+       font-size: .4rem;
+       letter-spacing: 2px;
+       font-weight: 400;
+     }
+  }
+  .GoLogin-img{
+    padding-top: .3rem;
+  }
+  .GoLogin-but{
+    font-size: .3rem;
+    margin: 1rem auto;
+      width: 6rem;
+      height: .8rem;
+      text-align: center;
+    line-height: .8rem;
+    background: #ad0e11;
+    color: white;
+    border-radius: .02rem;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

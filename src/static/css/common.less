@@ -25,7 +25,7 @@ html {
 /*SEARCH*/
 .iptTopBox{
   box-sizing: border-box;
-  padding: 20px .3rem;
+  padding: 5px .3rem;
   width: 100%;
   height: .72rem;
   background: #fff;
@@ -37,9 +37,15 @@ html {
     box-sizing: border-box;
     width: 6.9rem;
     margin: 0 auto;
+    input:focus::-webkit-input-placeholder {
+      color: transparent;
+    }
+
+
 
     .ant-input:not(:last-child){
-      background: #f3f5f5;
+      background: rgba(0,0,0,.03);
+      border: none;
       color: #999999;
     }
   }
@@ -91,4 +97,174 @@ html {
   padding-top: 72px;
 
 }
+/*购物车公共组件*/
+.liveBox {
+  .topBox {
+    display: block;
+    background: #fff;
+    margin: 0 auto ;
+    font-size: .35rem;
+    color: black;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    border-top: 1px solid #dddddd;
+
+    .like {
+      text-align: center;
+      margin: .5rem auto;
+      background: #FFF;
+      position: relative;
+
+      .show {
+        border-bottom: 1px solid #999;
+      }
+      .xihuan {
+        position: absolute;
+        left: 50%;
+        top: -.25rem;
+        background: #fff;
+        transform: translateX(-50%);
+        padding: 0 0.25rem;
+        letter-spacing: 1px;
+
+        .I {
+          color: #999999;
+        }
+      }
+
+    }
+  }
+  .ul {
+    width: 100%;
+    overflow: hidden;
+
+    .li {
+      width: 47.5%;
+      background: #fff;
+      float: left;
+      margin: .2rem 1.5% .2rem 1%;
+      .bottomBox {
+        height: 100%;
+        padding: 0 0 10px;
+
+        img {
+          width: 100%;
+          height: 3rem;
+        }
+        .item {
+          margin: .16rem .2rem 0;
+
+          h3 {
+            height: .4rem;
+            line-height: .4rem;
+            overflow: hidden;
+            margin-bottom: .2rem;
+            color: black;
+            font-size: .28rem;
+          }
+          p {
+            font-size: .3rem;
+            color: #999;
+            line-height: .34rem;
+            margin-top: .06rem;
+            margin-bottom: .04rem;
+          }
+          span {
+            font-size: .36rem;
+            color: #ad0e11;
+          }
+          .span {
+            position: relative;
+            font-size: .3rem;
+            color: #ccc;
+            letter-spacing: 0;
+            text-align: center;
+
+            &:after {
+              content: "";
+              position: absolute;
+              width: 100%;
+              height: .03rem;
+              background-color: #ccc;
+              top: 50%;
+              left: 0;
+              right: 0;
+              margin-top: .03rem;
+            }
+          }
+        }
+        .HOT {
+          font-size: .24rem;
+          line-height: .4rem;
+          color: #ac8849;
+          position: relative;
+          left: 1.2rem;
+
+          &:after {
+            content: "\4F1A\5458\4EF7";
+            position: absolute;
+            left: -1.2rem;
+            bottom: -.04rem;
+            background: linear-gradient(#f9f6e7, #f2eacd);
+            padding: 0 .1rem;
+            white-space: nowrap;
+          }
+        }
+      }
+    }
+  }
+}
+.wuBox {
+  width: 100%;
+  height: 6rem;
+  background: #f9f9f9;
+  padding-top: .5rem;
+
+  .icon {
+    display: block;
+    width: 2.9rem;
+    height: 2.8rem;
+    margin: 0 auto;
+    font-size: 3rem;
+    color: #dddddd;
+  }
+
+  .mt20 {
+    display: block;
+    text-align: center;
+    color: #999;
+    margin-top: .4rem;
+    font-size: .32rem;
+
+    a {
+      width: 2.2rem;
+      height: .8rem;
+      display: block;
+      border: .01rem solid #999;
+      border-radius: .1rem;
+      text-align: center;
+      line-height: .72rem;
+      color: #666;
+      margin: .3rem auto 0;
+    }
+  }
+}
+
+.Login-logo{
+  width: 100%;
+  h1{
+    font-size: 0;
+    margin: 0 auto;
+    width: 1.7rem;
+    height: 1.7rem;
+    background: url("https://asset.yit.com/xcx/icon/yit-tv-logo.png") no-repeat;
+    background-size:90%;
+
+  }
+}
+
+
+
+
 

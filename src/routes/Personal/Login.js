@@ -15,8 +15,9 @@ class Login extends React.Component {
 
 
      handleClick=async ()=>{
-       let name = this.refs.input1.value.trim();
-       let password = this.refs.input2.value.trim();
+
+         let name = this.refs.input1.value.trim();
+         let password = this.refs.input2.value.trim();
           password=md5(password);
        if (name.length!==11||password.length===0){
            Modal.error({
@@ -30,7 +31,7 @@ class Login extends React.Component {
            });
            this.props.queryUserInfo();
            if (result.code===0){
-               this.props.history.go(-1);
+               this.props.history.go(-2);
 
            } else {
                Modal.error({
@@ -50,7 +51,7 @@ class Login extends React.Component {
               }}><Icon type="left"/></div>
                 <span className='Login-span'>手机号登录</span>
                 <div className='Login-close' onClick={()=>{
-                    this.props.history.go(-1)
+                    this.props.history.go(-2)
                 }}><Icon type="close"/></div>
             </div>
             <div className='Login-main'>
