@@ -13,6 +13,7 @@ class Info extends React.Component {
     constructor(props, context) {
         super(props, context);
 
+
     }
 
     componentWillMount() {
@@ -39,12 +40,14 @@ class Info extends React.Component {
 
 
     render() {
-        let {topCategory, bannerData, product, filterProductData} = this.props;
-        let s=filterProductData.slice(0);
-        s.sort((a,b)=>{
-            return a.id-b.id;
-        })
-        console.log(s);
+        let {topCategory, bannerData, filterProductData} = this.props;
+        let s = filterProductData.slice(0);
+        s.sort((a, b) => {
+            return a.id - b.id;
+        });
+        if (topCategory.length === 0&&bannerData.length === 0&&filterProductData.length === 0) return '';
+
+
         return <div className={'infoBox'}>
 
             <SearchTop/>
@@ -52,25 +55,25 @@ class Info extends React.Component {
             <Row className={'cmsEight'}>
 
                 {topCategory.map((item, index) => {
-                    let {pic, title, desc} = item;
+                    let {id,pic, title, desc} = item;
                     return <Col span={6} key={index}>
-                        <a href="">
+                        <Link to={`/category/info/?id=${id}`}>
                             <img
                                 src={pic}
-                                alt={desc}/></a>
+                                alt={desc}/></Link>
                         <div>{title}</div>
                     </Col>
                 })}
 
                 <Col span={6}>
-                    <a href="">
+                    <a href="javascript:;">
                         <img
                             src="http://imgcms.yit.com/cmsres/20180615/dd5187e8-44ce-4506-b752-c5bf4fd2d05d_120X120.png"
                             alt=""/></a>
                     <div>精选专题</div>
                 </Col>
                 <Col span={6}>
-                    <a href="">
+                    <a href="javascript:;">
                         <img
                             src="http://imgcms.yit.com/cmsres/20180515/c30ca126-0ebc-4a91-9ad6-080ec0e4e844_200X200.png"
                             alt=""/></a>
@@ -82,17 +85,17 @@ class Info extends React.Component {
             {/*home banner*/}
             <Carousel autoplay className={'banner'}>
                 {bannerData.map((item, index) => {
-                    let {pic} = item;
+                    let {pic,id} = item;
                     return <div className={'slide'} key={index}>
-                        <a href="javascript"><img
+                        <Link to={`/category/info/?id=${id}`}><img
                             src={pic}
-                            alt=""/></a>
+                            alt=""/></Link>
                     </div>
                 })}
             </Carousel>
             {/*广告*/}
             <div className={'cms-banner'}>
-                <a href=""><img
+                <a href="javascript:;"><img
                     src="http://imgcms.yit.com/cmsres/20180702/020d99b1-8b61-4faa-bf8e-4047382720d2_750X182.jpeg?imageView2/2/w/750"
                     alt=""/>
                 </a>
@@ -117,8 +120,11 @@ class Info extends React.Component {
                     <Col span={8}><NavLink to={'/home/info/tomorrow'} activeClassName={'active'}><span>7月3日 10:00</span>
                         <div><span>已经开抢</span></div>
                     </NavLink></Col>
-                    <Col span={8} style={{border: 'none'}}><NavLink
-                        to={'/home/info/aftertomorrow'} activeClassName={'active'}><span>7月3日 10:00</span>
+                    <Col span={8} style={{border: 'none'}}>
+                        <NavLink
+                        to={{
+                            pathname:'/home/info/aftertomorrow'
+                        }} activeClassName={'active'}><span>7月3日 10:00</span>
                         <div><span>已经开抢</span></div>
                     </NavLink></Col>
                 </Row>
@@ -136,11 +142,11 @@ class Info extends React.Component {
                     今日上新
                 </div>
                 <div className="item">
-                    {filterProductData.slice(0,24).map((item, index) => {
+                    {filterProductData.slice(0, 24).map((item, index) => {
                         let {desc, title, pic, id, price, currentPrice, vPrice} = item;
                         if (index % 4 === 0) {
                             return <div className={'prdItem'} key={index}>
-                                <Link to={'/detail'} id={id}>
+                                <Link to={`/detail/?id=${id}`}>
                                     <img
                                         src={pic}
                                         alt=""/>
@@ -216,10 +222,13 @@ class Info extends React.Component {
                 </div>
                 <div className="hotMain">
                     <ul className={'clearfix'}>
-                        {topCategory.map((item,index)=>{
-                            let {pic, title, desc} = item;
+                        {topCategory.map((item, index) => {
+                            let {pic, title, desc,id} = item;
                             return <li key={index}>
-                                <a href="">
+                                <Link to={{
+                                    pathname:'/category/info',
+                                    search:`?id=${id}`
+                                }}>
                                     <div className={'container'}>
                                         <div>{title}榜</div>
                                         <div>{desc}</div>
@@ -227,7 +236,7 @@ class Info extends React.Component {
                                     <img
                                         src={pic}
                                         alt=""/>
-                                </a>
+                                </Link>
                             </li>
                         })}
 
@@ -242,26 +251,26 @@ class Info extends React.Component {
                 </div>
                 <div className={'container'}>
                     {
-                        s.map((item,index)=>{
-                        let {id,desc,pic,title,vPrice,price}=item;
-                        return <Link to={`/detail?id=${id}`} className={'detail'} key={index}>
-                            <img
-                                src={pic}
-                                alt=""/>
-                            <div className={'title'}>
-                                <p>{title}</p>
-                                <span>{desc}</span>
-                            </div>
-                            <div className={'price'}>
-                                ¥{price}
-                            </div>
-                            <div className={'VIP-price'}>
-                                <span>会员价</span>
-                                <span>¥{vPrice}</span>
-                            </div>
+                        s.map((item, index) => {
+                            let {id, desc, pic, title, vPrice, price} = item;
+                            return <Link to={`/detail?id=${id}`} className={'detail'} key={index}>
+                                <img
+                                    src={pic}
+                                    alt=""/>
+                                <div className={'title'}>
+                                    <p>{title}</p>
+                                    <span>{desc}</span>
+                                </div>
+                                <div className={'price'}>
+                                    ¥{price}
+                                </div>
+                                <div className={'VIP-price'}>
+                                    <span>会员价</span>
+                                    <span>¥{vPrice}</span>
+                                </div>
 
-                        </Link>
-                    })}
+                            </Link>
+                        })}
 
 
                 </div>

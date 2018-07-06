@@ -1,89 +1,48 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {Icon} from 'antd'
-import CheckMore from "../CheckMore";
 import {Link} from 'react-router-dom'
+import CheckMore from "../CheckMore";
+import action from "../../../store/action";
 
- class AfterTomorrow extends React.Component{
-    constructor(props,context){
-        super(props,context)
+class AfterTomorrow extends React.Component {
+    constructor(props, context) {
+        super(props, context)
     }
-    render(){
-        return <div className={'prd'}>
 
-            <div className={'prdItem'}>
-                <a href="">
-                    <img src="http://img01.yit.com/media/2494097d-592e-4031-9305-91c89f475c03.jpg?imageView2/0/w/265" alt=""/>
-                    <div className={'ellipsis'}>乾隆册封的梅菜烧饼</div>
-                    <div className={'price'}><span>¥1080</span><span>¥1280</span></div>
-                    <div className={'VIP-price'}><span>会员价</span><span>¥1026</span></div>
-                    <div className={'tagBox'}><span>前30件再减200元</span></div>
-                </a>
-            </div>
-            <div className={'prdItem'}>
-                <a href="">
-                    <img src="http://img01.yit.com/media/2494097d-592e-4031-9305-91c89f475c03.jpg?imageView2/0/w/265" alt=""/>
-                    <div className={'ellipsis'}>乾隆册封的梅菜烧饼</div>
-                    <div className={'price'}><span>¥1080</span><span>¥1280</span></div>
-                    <div className={'VIP-price'}><span>会员价</span><span>¥1026</span></div>
-                    <div className={'tagBox'}><span>前30件再减200元</span></div>
-                </a>
-            </div>
-            <div className={'prdItem'}>
-                <a href="">
-                    <img src="http://img01.yit.com/media/2494097d-592e-4031-9305-91c89f475c03.jpg?imageView2/0/w/265" alt=""/>
-                    <div className={'ellipsis'}>乾隆册封的梅菜烧饼</div>
-                    <div className={'price'}><span>¥1080</span><span>¥1280</span></div>
-                    <div className={'VIP-price'}><span>会员价</span><span>¥1026</span></div>
-                    <div className={'tagBox'}><span>前30件再减200元</span></div>
-                </a>
-            </div>
-            <div className={'prdItem'}>
-                <a href="">
-                    <img src="http://img01.yit.com/media/2494097d-592e-4031-9305-91c89f475c03.jpg?imageView2/0/w/265" alt=""/>
-                    <div className={'ellipsis'}>乾隆册封的梅菜烧饼</div>
-                    <div className={'price'}><span>¥1080</span><span>¥1280</span></div>
-                    <div className={'VIP-price'}><span>会员价</span><span>¥1026</span></div>
-                    <div className={'tagBox'}><span>前30件再减200元</span></div>
-                </a>
-            </div>
-            <div className={'prdItem'}>
-                <a href="">
-                    <img src="http://img01.yit.com/media/2494097d-592e-4031-9305-91c89f475c03.jpg?imageView2/0/w/265" alt=""/>
-                    <div className={'ellipsis'}>乾隆册封的梅菜烧饼</div>
-                    <div className={'price'}><span>¥1080</span><span>¥1280</span></div>
-                    <div className={'VIP-price'}><span>会员价</span><span>¥1026</span></div>
-                    <div className={'tagBox'}><span>前30件再减200元</span></div>
-                </a>
-            </div>
-            <div className={'prdItem'}>
-                <a href="">
-                    <img src="http://img01.yit.com/media/2494097d-592e-4031-9305-91c89f475c03.jpg?imageView2/0/w/265" alt=""/>
-                    <div className={'ellipsis'}>乾隆册封的梅菜烧饼</div>
-                    <div className={'price'}><span>¥1080</span><span>¥1280</span></div>
-                    <div className={'VIP-price'}><span>会员价</span><span>¥1026</span></div>
-                    <div className={'tagBox'}><span>前30件再减200元</span></div>
-                </a>
-            </div>
-            <div className={'prdItem'}>
-                <a href="">
-                    <img src="http://img01.yit.com/media/2494097d-592e-4031-9305-91c89f475c03.jpg?imageView2/0/w/265" alt=""/>
-                    <div className={'ellipsis'}>乾隆册封的梅菜烧饼</div>
-                    <div className={'price'}><span>¥1080</span><span>¥1280</span></div>
-                    <div className={'VIP-price'}><span>会员价</span><span>¥1026</span></div>
-                    <div className={'tagBox'}><span>前30件再减200元</span></div>
-                </a>
-            </div>
+
+    render() {
+        let {product} = this.props;
+        if (product.length === 0) return '';
+        console.log(this.props);
+        return <div className={'prd'}>
+            {
+                product[2].item.map((item, index) => {
+                    let {id,pic,price,vPrice,currentPrice,title}=item;
+                    return <div className={'prdItem'} id={id} key={index}>
+                        <Link to={`/detail?id=${id}`}>
+                            <img src={pic}
+                                 alt=""/>
+                            <div className={'ellipsis'}>{title}</div>
+                            <div className={'price'}><span>¥{price}</span><span>¥{currentPrice}</span></div>
+                            <div className={'VIP-price'}><span>会员价</span><span>¥{vPrice}</span></div>
+                            <div className={'tagBox'}><span>前30件再减200元</span></div>
+                        </Link>
+                    </div>
+                })
+            }
             <div className="prdMore">
                 <Link to={'/home/checkmore'}>
                     <div className={'More'}>查看更多</div>
                     <div className={'m-More'}>MORE</div>
-                    <Icon type="right-circle-o" style={{color:'#ad0e11',fontSize:'16px'}}/>
+                    <Icon type="right-circle-o" style={{color: '#ad0e11', fontSize: '16px'}}/>
                 </Link>
             </div>
 
+
         </div>
+
     }
 }
 
-export default connect()(AfterTomorrow);
+export default connect(state => ({...state.home}), action.home)(AfterTomorrow);

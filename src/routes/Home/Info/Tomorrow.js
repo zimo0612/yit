@@ -1,33 +1,47 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {Icon} from 'antd'
-import CheckMore from "../CheckMore";
 import {Link} from 'react-router-dom'
+import CheckMore from "../CheckMore";
+import action from "../../../store/action";
 
- class Tomorrow extends React.Component{
-    constructor(props,context){
-        super(props,context)
+class Tomorrow extends React.Component {
+    constructor(props, context) {
+        super(props, context)
     }
-    render(){
+
+
+    render() {
+        let {product} = this.props;
+        if (product.length === 0) return '';
         return <div className={'prd'}>
-            <div className={'prdItem'}>
-                <a href="">
-                    <img src="http://img01.yit.com/media/1cab180c-395c-46a3-828d-9ee5449ef66d.jpg?imageView2/0/w/265" alt=""/>
-                    <div className={'ellipsis'}>古代皇帝补身子的桑椹膏</div>
-                    <div className={'price'}><span>¥82</span><span>¥98</span></div>
-                    <div className={'VIP-price'}><span>会员价</span><span>¥77.9</span></div>
-                    <div className={'tagBox'}><span>前30件再减200元</span></div>
-                </a>
-            </div>
+            {
+                product[1].item.map((item, index) => {
+                    let {id,pic,price,vPrice,currentPrice,title}=item;
+                    return <div className={'prdItem'} id={id} key={index}>
+                        <Link to={`/detail?id=${id}`}>
+                            <img src={pic}
+                                 alt=""/>
+                            <div className={'ellipsis'}>{title}</div>
+                            <div className={'price'}><span>¥{price}</span><span>¥{currentPrice}</span></div>
+                            <div className={'VIP-price'}><span>会员价</span><span>¥{vPrice}</span></div>
+                            <div className={'tagBox'}><span>前30件再减200元</span></div>
+                        </Link>
+                    </div>
+                })
+            }
             <div className="prdMore">
                 <Link to={'/home/checkmore'}>
                     <div className={'More'}>查看更多</div>
                     <div className={'m-More'}>MORE</div>
-                    <Icon type="right-circle-o" style={{color:'#ad0e11',fontSize:'16px'}}/>
+                    <Icon type="right-circle-o" style={{color: '#ad0e11', fontSize: '16px'}}/>
                 </Link>
             </div>
+
+
         </div>
+
     }
 }
 
-export default connect()(Tomorrow);
+export default connect(state => ({...state.home}), action.home)(Tomorrow);
