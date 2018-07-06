@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux'
 import {Icon} from 'antd'
 import {Link} from 'react-router-dom'
+import Recommend from '../../component/Recommend'
 
 import NavBottom from '../../component/NavBottom'
 
@@ -21,6 +22,7 @@ class Null extends React.Component {
                     </span>
                 </div>
             </div>
+            <Recommend/>
         </div>
     }
 }

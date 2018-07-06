@@ -43,8 +43,8 @@ class Info extends React.Component {
         let s=filterProductData.slice(0);
         s.sort((a,b)=>{
             return a.id-b.id;
-        })
-        console.log(s);
+        });
+
         return <div className={'infoBox'}>
 
             <SearchTop/>

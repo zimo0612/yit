@@ -1,11 +1,14 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import '../../static/css/Detail.less'
-import {Switch, Link, Route, NavLink} from 'react-router-dom'
+import {Switch, Link, Route, NavLink,withRouter} from 'react-router-dom'
 import {Icon, Row, Col} from 'antd'
 import Home from '../Home'
 import ShopCart from '../ShopCart'
 import Buy from '../Detail/Buy'
+import {checkLogin} from "../../API/personal";
+import {addShopCart} from "../../API/shopCarts";
+import action from "../../store/action";
 
 function onChange(value) {
     console.log('changed', value);
@@ -13,16 +16,26 @@ function onChange(value) {
 
 class Info extends React.Component {
     constructor(props, context) {
-        super(props, context)
+        super(props, context);
         this.state = {
-            n: 1
+            n: 1,
+            isLogin:false
         }
     }
-
+    async componentWillMount() {
+        let result = await checkLogin(),
+            isLogin = parseFloat(result.code) === 0 ? true : false;
+        this.setState({isLogin})
+    }
     handleConfirm = ev => {
-        let {mask, confirm} = this.refs;
-        mask.style.display = 'block';
-        confirm.style.display = 'block'
+        if (this.state.isLogin){
+            let {mask, confirm} = this.refs;
+            mask.style.display = 'block';
+            confirm.style.display = 'block'
+        } else {
+            this.props.history.push('/gologin')
+        }
+
     };
 
     plus = ev => {
@@ -43,8 +56,16 @@ class Info extends React.Component {
         confirm.style.display = 'none'
     };
 
+    send= async()=>{
+      let result= await addShopCart(7, 1);
+        if (parseFloat(result.code)===0){
+            this.props.addShop(1)
+        }
+    };
+
 
     render() {
+
         let {n} = this.state;
         return <div>
             <div className={'show'}>
@@ -105,10 +126,10 @@ class Info extends React.Component {
 
                     </div>
                 </div>
-                <Link to={'/shopcart'} className={'go-shopcart'}>加入购物车</Link>
+               <Link to={'/shopcart'} onClick={this.send} className={'go-shopcart'}>加入购物车</Link>
             </div>
         </div>
     }
 }
 
-export default connect()(Info);
+export default withRouter(connect(state=>({...state.shopCarts}),action.shopCarts)(Info));
