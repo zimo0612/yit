@@ -20,6 +20,8 @@ import Home from './routes/Home';
 import Personal from './routes/Personal';
 import Category from './routes/Category';
 import ShopCart from './routes/ShopCart';
+import NavBottom from './component/NavBottom';
+import SearchTop from './component/SearchTop';
 
 
 ReactDOM.render(<Provider store={store}>
@@ -27,7 +29,7 @@ ReactDOM.render(<Provider store={store}>
         <LocaleProvider locale={zh_CN}>
             <div>
                 {/*SEARCH*/}
-                {/*<Search/>*/}
+                <SearchTop/>
 
                 {/*MAIN=>ROUTE*/}
                 <main className='container'>
@@ -41,7 +43,7 @@ ReactDOM.render(<Provider store={store}>
                 </main>
 
                 {/*FOOTER*/}
-                {/*<NavBottom/>*/}
+                <NavBottom/>
             </div>
         </LocaleProvider>
     </HashRouter>
