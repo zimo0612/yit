@@ -105,7 +105,7 @@ class Info extends React.Component {
 
                     </div>
                 </div>
-                <Link to={'/shopcart'} className={'go-shopcart'}>加入购物车</Link>
+                <Link to={'/shopcart'} className={'go-shopcart'} onClick={this.handleCar()}>加入购物车</Link>
             </div>
         </div>
     }
