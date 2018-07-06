@@ -1,6 +1,8 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {Icon} from 'antd'
+import {Link} from 'react-router-dom'
+import CheckMore from "../CheckMore";
 
 class Today extends React.Component {
     constructor(props, context) {
@@ -90,12 +92,13 @@ class Today extends React.Component {
                 </a>
             </div>
             <div className="prdMore">
-                <a href="">
+                <Link to={'/home/checkmore'}>
                     <div className={'More'}>查看更多</div>
                     <div className={'m-More'}>MORE</div>
                     <Icon type="right-circle-o" style={{color:'#ad0e11',fontSize:'16px'}}/>
-                </a>
+                </Link>
             </div>
+
 
         </div>
 

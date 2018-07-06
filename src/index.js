@@ -20,12 +20,11 @@ import Home from './routes/Home';
 import Personal from './routes/Personal';
 import Category from './routes/Category';
 import ShopCart from './routes/ShopCart';
+import NavBottom from './component/NavBottom';
+import SearchTop from './component/SearchTop';
 
 import Detail from './routes/Detail';
 import Gologin from './routes/Gologin'
-
-
-import NavBottom from './component/NavBottom';
 
 ReactDOM.render(<Provider store={store}>
     <HashRouter>
