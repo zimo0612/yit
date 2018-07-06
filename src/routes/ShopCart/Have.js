@@ -1,5 +1,5 @@
 import React from 'react';
-import {Icon, Modal} from 'antd'
+import {Icon, Modal, Checkbox} from 'antd'
 
 import {removeShopCart} from '../../API/shopCarts'
 
@@ -22,8 +22,8 @@ export default class Have extends React.Component {
             <div className={'allCartList'}>
                 <ul className={'list'}>
                     <li>
-                 <span className={'left'} onClick={this.handleShopCart}>
-                    <Icon type="check" />
+                 <span className={'left'}>
+                   <Checkbox/>
                 </span>
                         <div className={'right'}>
                             <img src='https://img01.yit.com/5/7/57ac50c8ba2d6.jpg-620.466.80' alt=""/>
@@ -35,7 +35,7 @@ export default class Have extends React.Component {
                                     <Icon type="minus-circle-o" className={'tl'} onClick={this.minus}/>
                                     <h4>{this.state.n}</h4>
                                     <Icon type="plus-circle-o" className={'tz'} onClick={this.addition}/>
-                                    <Icon type="close" className={'tr'} onClick={this.showDeleteConfirm} />
+                                    <Icon type="close" className={'tr'} onClick={this.showDeleteConfirm}/>
                                 </div>
                             </div>
                         </div>
@@ -61,7 +61,6 @@ export default class Have extends React.Component {
             n: this.state.n + 1,
         })
     };
-
 
 
     showDeleteConfirm = ev => {

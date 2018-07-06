@@ -44,10 +44,9 @@ class recommend extends React.Component {
                             <img src={pic} alt=""/>
                             <div className={'item'}><h3>{title}</h3>
                                 <p>{desc}</p>
-                                <span>¥{price}</span>&nbsp;
-                                <span className={'span'}>¥{currentPrice}</span>
+                                <span>¥{price}</span>&nbsp;&nbsp;<span className={'span'}>¥{currentPrice}</span>
                             </div>
-                            <span className={'HOT'}>¥{305}</span>
+                            <div className={'VIP-price'}><span className={'VP'}>会员价</span><span className={'PV'}>¥{vPrice}</span></div>
                         </a>
                     </li>
                 })}

@@ -1,7 +1,7 @@
 /*IMPORT ANTD*/
 @import "~antd/dist/antd.css";
 
-html{
+html {
   font-size: 100px;
 }
 
@@ -11,8 +11,9 @@ html{
   overflow: hidden;
   -webkit-font-smoothing: antialiased;
 }
+
 /*SEARCH*/
-.iptTopBox{
+.iptTopBox {
   box-sizing: border-box;
   padding: 5px .3rem;
   width: 100%;
@@ -23,8 +24,7 @@ html{
   z-index: 9999;
   top: 0;
 
-
-  .ant-input-search{
+  .ant-input-search {
     box-sizing: border-box;
     width: 6.9rem;
     margin: 0 auto;
@@ -32,10 +32,8 @@ html{
       color: transparent;
     }
 
-
-
-    .ant-input:not(:last-child){
-      background: rgba(0,0,0,.03);
+    .ant-input:not(:last-child) {
+      background: rgba(0, 0, 0, .03);
       border: none;
       color: #999999;
     }
@@ -85,16 +83,17 @@ html{
 }
 
 /*CATEGORY-BOX*/
-.categoryBox,.homeBox {
+.categoryBox, .homeBox {
   padding-top: 72px;
 
 }
+
 /*购物车公共组件*/
 .liveBox {
   .topBox {
     display: block;
     background: #fff;
-    margin: 0 auto ;
+    margin: 0 auto;
     font-size: .35rem;
     color: black;
     width: 100%;
@@ -151,15 +150,14 @@ html{
             height: .4rem;
             line-height: .4rem;
             overflow: hidden;
-            margin-bottom: .2rem;
             color: black;
             font-size: .28rem;
           }
           p {
-            font-size: .3rem;
+            font-size: .2rem;
             color: #999;
             line-height: .34rem;
-            margin-top: .06rem;
+            margin-top: .02rem;
             margin-bottom: .04rem;
           }
           span {
@@ -203,10 +201,31 @@ html{
             white-space: nowrap;
           }
         }
+        .VIP-price {
+          border: .01rem solid #e0ce94;
+          display: inline-block;
+          margin-top: .1rem;
+          border-radius: .08rem;
+          font-size: .28rem;
+          .VP {
+            display: inline-block;
+            color: #ac8849;
+            background: linear-gradient(#F9F6E7, #F2EACD);
+            border-radius: .05rem;
+            height: auto;
+          }
+          .PV {
+            display: inline-block;
+            margin-left: .15rem;
+            margin-right: .1rem;
+            color: #ac8849;
+          }
+        }
       }
     }
   }
 }
+
 .wuBox {
   width: 100%;
   height: 6rem;
@@ -243,15 +262,15 @@ html{
   }
 }
 
-.Login-logo{
+.Login-logo {
   width: 100%;
-  h1{
+  h1 {
     font-size: 0;
     margin: 0 auto;
     width: 1.7rem;
     height: 1.7rem;
     background: url("https://asset.yit.com/xcx/icon/yit-tv-logo.png") no-repeat;
-    background-size:90%;
+    background-size: 90%;
 
   }
 }
