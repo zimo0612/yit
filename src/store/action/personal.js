@@ -12,7 +12,7 @@ let personal = {
             })
         }
     }
-}
+};
 
 
 export default personal;

@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux'
 import {Icon} from 'antd'
-
+import {Link} from 'react-router-dom'
 
 import NavBottom from '../../component/NavBottom'
 
@@ -17,7 +17,7 @@ class Null extends React.Component {
                 <div>
                     <span className={'mt20'}>
                         这里有全球一万件好东西
-                    <a href="javascript:;">去挑选</a>
+                        <Link to={'/home'}>去挑选</Link>
                     </span>
                 </div>
             </div>

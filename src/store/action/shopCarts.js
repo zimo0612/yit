@@ -1,24 +1,15 @@
 import * as TYPES from '../action-types';
-import {queryShopCart} from '../../API/shopCarts'
+import {shopCart} from '../../API/shopCarts'
 
 let shopCarts = {
-    queryUnpay() {
+    queryShopCart(state) {
         return async dispatch => {
-            let result = queryShopCart(0);
+            let result = await shopCart(state);
             dispatch({
-                type: TYPES.SHOP_CART_UNPAY,
-                result
+                type: TYPES.QUERY_SHOP_CART,
+                result,
             })
         }
     },
-    queryPay() {
-        return async dispatch => {
-            let result = queryShopCart(1);
-            dispatch({
-                type: TYPES.SHOP_CART_PAY,
-                result
-            })
-        }
-    }
 };
 export default shopCarts;
