@@ -4,3 +4,4 @@ import axios from './index';
 export function queryProductData(id) {
     return axios.get(`/product/productInfo?id=${id}`);
 }
+

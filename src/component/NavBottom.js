@@ -1,11 +1,18 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {withRouter, NavLink} from 'react-router-dom';
-import {Icon} from 'antd';
+import {Icon} from 'antd'
+import action from '../store/action';
 
 class NavBottom extends React.Component {
     constructor(props, context) {
         super(props, context);
+    }
+
+    componentWillMount(){
+        if(this.props.shopCartData.length===0){
+            this.props.queryShopCartInfo(0);
+        }
     }
 
     render() {
@@ -30,4 +37,4 @@ class NavBottom extends React.Component {
     }
 }
 
-export default withRouter(connect()(NavBottom));
+export default withRouter(connect(state=>({...state.shopCarts}),action.shopCarts)(NavBottom));

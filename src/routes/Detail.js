@@ -5,28 +5,33 @@ import {Link, withRouter} from 'react-router-dom'
 import {Icon} from 'antd';
 import Qs from 'qs';
 import {queryProductData} from '../API/detail';
+import action from '../store/action';
 
 class Detail extends React.Component {
     constructor(props, context) {
         super(props, context);
         this.state = {
-            result:{},
-            n:1
-        }
+            result: {},
+            n: 1
+        };
     }
 
-    async componentWillMount(){
-        let id = parseFloat(Qs.parse(this.props.history.location.search.slice(1)).id);
+    async componentWillMount() {
+        let id = parseFloat(Qs.parse(this.props.history.location.search.slice(1)).id) || 1;
         let result = await queryProductData(id);
         this.setState({
             result
-        })
+        });
+        if(this.props.shopCartData.length===0){
+            this.props.queryShopCartInfo(0);
+        }
     }
 
     render() {
-        let {result,n} = this.state;
-        if(result.data === undefined) return '';
-        let {pic,title,desc,price,currentPrice,vPrice} = result.data[0];
+        let {result, n} = this.state;
+        if (result.data === undefined) return '';
+        let {pic, title, desc, price, currentPrice, vPrice,id} = result.data[0];
+        this.id = id;
 
         return <div className={'DetailBox'}>
             <div className={'show'}>
@@ -87,10 +92,25 @@ class Detail extends React.Component {
 
                     </div>
                 </div>
-                <Link to={'/shopcart'} className={'go-shopcart'}>加入购物车</Link>
+                <a href={'javascript:;'} className={'go-shopcart'} onClick={this.submitProduct}>加入购物车</a>
             </div>
         </div>
     }
+
+    submitProduct = ev => {
+        this.close();
+        let item = this.props.shopCartData.find(item=>{
+            this.beforeAmount = item.amount;
+            return item.item.id===this.id;
+        });
+        //=>和redux中有和当前商品id相同的，走修改数量流程
+        if(item){
+            this.props.editShopCartData(this.id,this.beforeAmount+this.state.n);
+            return;
+        }
+        //=>和redux中没有相同商品的，走添加流程
+        this.props.addShopCartData(this.id,this.state.n,this.state.result.data[0]);
+    };
 
     handleConfirm = ev => {
         let {mask, confirm} = this.refs;
@@ -118,4 +138,4 @@ class Detail extends React.Component {
 
 }
 
-export default withRouter(connect()(Detail));
+export default withRouter(connect(state=>({...state.shopCarts}),action.shopCarts)(Detail));

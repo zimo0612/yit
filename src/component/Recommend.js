@@ -1,12 +1,11 @@
 import React from 'react';
-import {connect} from 'react-redux'
-import {Icon} from 'antd'
-import {salesCart} from '../API/shopCarts'
+import {connect} from 'react-redux';
+import {Icon} from 'antd';
+import {salesCart} from '../API/shopCarts';
 
 class recommend extends React.Component {
     constructor(props, context) {
-        super(props, context)
-
+        super(props, context);
         this.state = {
             isRun: false
         }

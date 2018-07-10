@@ -1,15 +1,57 @@
 import * as TYPES from '../action-types';
-import {shopCart} from '../../API/shopCarts'
+import {queryShopCartInfo,addShopCart,editShopCart,removeShopCart,payShopCartItems} from '../../API/shopCarts'
 
 let shopCarts = {
-    queryShopCart(state) {
+    queryShopCartInfo(state) {
         return async dispatch => {
-            let result = await shopCart(state);
+            let result = await queryShopCartInfo(state);
             dispatch({
-                type: TYPES.QUERY_SHOP_CART,
+                type: TYPES.SHOP_CART_INFO,
                 result,
             })
         }
     },
+    editShopCartData(id,amount){
+        return async dispatch=>{
+            let result = await editShopCart(id,amount);
+            dispatch({
+                type:TYPES.SHOP_CART_EDIT,
+                result,
+                id,
+                amount
+            })
+        }
+    },
+    addShopCartData(id,amount,item){
+        return async dispatch=>{
+            let result = await addShopCart(id,amount);
+            dispatch({
+                type:TYPES.SHOP_CART_ADD,
+                result,
+                item,
+                amount
+            })
+        }
+    },
+    removeShopCartData(id){
+        return async dispatch=>{
+            let result = await removeShopCart(id);
+            dispatch({
+                type:TYPES.SHOP_CART_REMOVE,
+                result,
+                id
+            })
+        }
+    },
+    payShopCartItems(id){
+        return async dispatch=>{
+            let result = await payShopCartItems(id);
+            dispatch({
+                type:TYPES.SHOP_CART_PAY,
+                result,
+                id
+            })
+        }
+    }
 };
 export default shopCarts;

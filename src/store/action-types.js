@@ -1,23 +1,23 @@
-
+/*分类*/
 export const CATEGORY_CLASS='CATEGORY_CLASS';
+
 export const CATEGORY_SUB_TYPE_PRODUCT='CATEGORY_SUB_TYPE_PRODUCT';
 
-
+/*个人中心*/
 export const QUERY_USER_INFO='QUERY_USER_INFO';
 
 export const PERSONAL_QUERY_BASE = "PERSONAL_QUERY_BASE";
 
+/*购物车*/
+export const SHOP_CART_ADD = 'SHOP_CART_ADD';
 
-export const QUERY_SHOP_CART='QUERY_SHOP_CART';
+export const SHOP_CART_EDIT = 'SHOP_CART_EDIT';
 
+export const SHOP_CART_REMOVE = 'SHOP_CART_REMOVE';
 
+export const SHOP_CART_INFO = 'SHOP_CART_INFO';
 
-
-
-export const SHOP_CART_UNPAY='SHOP_CART_UNPAY';
-
-export const SHOP_CART_PAY='SHOP_CART_PAY';
-
+export const SHOP_CART_PAY = 'SHOP_CART_PAY';
 
 /*home信息*/
 
