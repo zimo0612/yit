@@ -9,7 +9,11 @@ export default function shopCarts(state = INIT_STATE, action) {
         //获取购物车信息
         case TYPES.SHOP_CART_INFO:
             if (parseFloat(action.result.code) === 0) {
-                state.shopCartData = action.result.data
+                state.shopCartData = action.result.data;
+                state.shopCartData.map(item=>{
+                    item.state=0;
+                    return item;
+                })
             }
             break;
         case TYPES.SHOP_CART_EDIT:
@@ -25,7 +29,8 @@ export default function shopCarts(state = INIT_STATE, action) {
             if (parseFloat(action.result.code) === 0) {
                 state.shopCartData.push({
                     item: action.item,
-                    amount: action.amount
+                    amount: action.amount,
+                    state:0
                 });
             }
             break;
@@ -39,12 +44,14 @@ export default function shopCarts(state = INIT_STATE, action) {
         case TYPES.SHOP_CART_PAY:
             if (parseFloat(action.result.code) === 0) {
                 state.shopCartData = state.shopCartData.map(item => {
-                    if(item.item.id===action.id){
-                        item.item.state=1
+                    if (item.item.id === action.id) {
+                        item.item.state = 1
                     }
                     return item;
                 })
             }
+            break;
     }
+
     return state;
 };

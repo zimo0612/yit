@@ -15,6 +15,8 @@ export const SHOP_CART_EDIT = 'SHOP_CART_EDIT';
 
 export const SHOP_CART_REMOVE = 'SHOP_CART_REMOVE';
 
+export const QUERY_SHOP_CART='QUERY_SHOP_CART';
+
 export const SHOP_CART_INFO = 'SHOP_CART_INFO';
 
 export const SHOP_CART_PAY = 'SHOP_CART_PAY';
@@ -29,6 +31,13 @@ export const HOME_QUERY_KILLPRODUCT='HOME_QUERY_KILLPRODUCT';
 
 export const HOME_QUERY_FILTERPRODUCT='HOME_QUERY_FILTERPRODUCT';
 
+
+
+//点加入购物车之后，通知reducer往redux中存一份
+export const ADD_SHOP='ADD_SHOP';
+
+
 /*商品详情*/
 export const DETAIL_QUERY_PRODUCT = 'DETAIL_QUERY_PRODUCT';
+
 

@@ -1,6 +1,9 @@
 import React from 'react';
 import {Icon, Modal, Checkbox, Button} from 'antd';
 import {connect} from 'react-redux';
+import Recommend from '../../component/Recommend'
+import {removeShopCart} from '../../API/shopCarts'
+import {withRouter} from "react-router-dom";
 import action from "../../store/action";
 
 class Have extends React.Component {
@@ -136,7 +139,7 @@ class Have extends React.Component {
                     </Modal>
                 </div>
             </div>
-            {/*<Bottom ref='stand'/>*/}
+            <Recommend/>
         </div>
     }
 
@@ -177,8 +180,6 @@ class Have extends React.Component {
         }, 500);
     };
 
-
-
     //减少商品数量按钮
     minus = id => {
         let {editShopCartData} = this.props;
@@ -198,10 +199,6 @@ class Have extends React.Component {
                 }
             }
             return item;
-        });
-        this.setState({
-            itemList: newItemList,
-            total
         });
     };
 
@@ -233,6 +230,7 @@ class Have extends React.Component {
     showDeleteConfirm = id => {
         let {shopCartData, removeShopCartData} = this.props;
         let _this = this;
+
         Modal.confirm({
             content: '你确定要删除该商品',
             okText: '确定',
@@ -260,4 +258,4 @@ class Have extends React.Component {
     }
 }
 
-export default connect(state => ({...state.shopCarts}), action.shopCarts)(Have)
+export default withRouter(connect(state => ({...state.shopCarts}), action.shopCarts)(Have));

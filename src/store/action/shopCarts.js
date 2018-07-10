@@ -44,10 +44,10 @@ let shopCarts = {
         }
     },
     payShopCartItems(id){
-        return async dispatch=>{
+        return async dispatch=> {
             let result = await payShopCartItems(id);
             dispatch({
-                type:TYPES.SHOP_CART_PAY,
+                type: TYPES.SHOP_CART_PAY,
                 result,
                 id
             })
