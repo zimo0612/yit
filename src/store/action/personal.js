@@ -2,7 +2,6 @@ import * as TYPES from '../action-types';
 import {userInfo,out,checkLogin} from '../../API/personal';
 let personal = {
     queryUserInfo() {
-        console.log(1);
         return async dispatch => {
             let result = await userInfo();
             dispatch({
@@ -12,10 +11,8 @@ let personal = {
         }
     },
     checkLogin(){
-        console.log("login");
         return async dispatch=>{
             let result = await checkLogin();
-            console.log(2.333);
             dispatch({
                 type:TYPES.USER_CHECK_LOGIN,
                 result

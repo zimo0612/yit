@@ -3,7 +3,7 @@ import {Icon, Modal, Checkbox, Button} from 'antd';
 import {connect} from 'react-redux';
 import Recommend from '../../component/Recommend'
 import {removeShopCart} from '../../API/shopCarts'
-import {withRouter} from "react-router-dom";
+import {withRouter,Link} from "react-router-dom";
 import action from "../../store/action";
 
 class Have extends React.Component {
@@ -67,7 +67,7 @@ class Have extends React.Component {
                                    }}/>
                             </span>
                             <div className={'right'}>
-                                <img src={pic} alt={desc}/>
+                                <Link to={`/detail?id=${id}`}><img src={pic} alt={desc}/></Link>
                                 <div className={'title'}>
                                     <h3>{title}</h3>
                                     <p>{desc}</p>

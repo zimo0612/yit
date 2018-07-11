@@ -15,9 +15,7 @@ export default function personal(state = INIT_STATE, action) {
             }
             break;
         case TYPES.USER_CHECK_LOGIN:
-            console.log(3);
             if (parseFloat(action.result.code) === 0) {
-                console.log(4);
                 state.isLogin = true;
             }
             break;

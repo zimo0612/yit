@@ -28,7 +28,6 @@ class Detail extends React.Component {
     }
 
     componentDidMount(){
-        console.log(this.props);
         if(!this.props.isLogin){
             this.props.checkLogin();
         }
