@@ -17,6 +17,9 @@ import Gologin from "./Gologin";
 class ShopCart extends React.Component {
     constructor(props, context) {
         super(props, context);
+        this.state={
+            count:0
+        }
     }
 
     async componentWillMount() {
@@ -27,15 +30,25 @@ class ShopCart extends React.Component {
             }
         }
         let {shopCartData, queryShopCartInfo} = this.props;
-        if (!shopCartData) {
-            queryShopCartInfo(0);
+        if (shopCartData.length===0) {
+            if(this.state.count===0){
+                queryShopCartInfo(0);
+                this.setState({
+                    count:1
+                });
+            }
         }
     }
 
-    async componentWillReceiveProps(nextProps,nextState){
+    componentWillReceiveProps(nextProps,nextState){
         let {shopCartData, queryShopCartInfo} = nextProps;
-        if (!shopCartData) {
-            queryShopCartInfo(0);
+        if (shopCartData.length===0) {
+            if(this.state.count===0){
+                queryShopCartInfo(0);
+                this.setState({
+                    count:1
+                });
+            }
         }
     }
 

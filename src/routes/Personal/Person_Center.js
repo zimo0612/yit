@@ -54,7 +54,8 @@ class Person_Center extends React.Component {
             </div>
             {this.props.isLogin?( <div className="Center-footer" onClick={ ()=>{
                 this.props.userLogOut();
-                this.props.history.push('/personal')
+                this.props.history.push('/personal');
+                this.props.clearShopCartData();
             }}>
                 退出登录
             </div>):''}
@@ -63,4 +64,4 @@ class Person_Center extends React.Component {
 
 }
 
-export default withRouter(connect(state=>({...state.personal}),action.personal)(Person_Center))
+export default withRouter(connect(state=>({...state.personal}),{...action.personal,...action.shopCarts})(Person_Center))

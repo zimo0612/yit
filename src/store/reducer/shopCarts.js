@@ -64,6 +64,9 @@ export default function shopCarts(state = INIT_STATE, action) {
                 });
             }
             break;
+        case TYPES.SHOP_CART_INFO_CLEAR:
+            state.shopCartData=[];
+            break;
     }
 
     return state;

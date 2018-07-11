@@ -61,6 +61,13 @@ let shopCarts = {
                 result
             })
         }
+    },
+    clearShopCartData(){
+        return dispatch=>{
+            dispatch({
+                type:TYPES.SHOP_CART_INFO_CLEAR
+            })
+        }
     }
 };
 export default shopCarts;

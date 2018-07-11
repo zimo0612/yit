@@ -23,6 +23,8 @@ export const SHOP_CART_INFO = 'SHOP_CART_INFO';
 
 export const SHOP_CART_PAY = 'SHOP_CART_PAY';
 
+export const SHOP_CART_INFO_CLEAR = "SHOP_CART_INFO_CLEAR";
+
 /*home信息*/
 
 export const HOME_QUERY_TOPCATEGORY='HOME_QUERY_TOPCATEGORY';
