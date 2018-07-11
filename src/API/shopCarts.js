@@ -48,7 +48,7 @@ export function payShopCartItems(id) {
 export function salesCart(typeId) {
     return axios.get('/product/filterProduct', {
         params: {
-            typeId: 1
+            typeId
         }
     });
 }

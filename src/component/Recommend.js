@@ -1,29 +1,22 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {Link} from 'react-router-dom';
 import {Icon} from 'antd';
-import {salesCart} from '../API/shopCarts';
+import action from '../store/action';
 
 class recommend extends React.Component {
     constructor(props, context) {
         super(props, context);
-        this.state = {
-            isRun: false
+
+    }
+    componentWillMount(){
+        if(this.props.recommendData.length===0){
+            this.props.queryRecommendData(1);
         }
     }
 
-    async componentDidMount() {
-        this.retuls = await salesCart();
-        this.setState({
-            isRun: true
-        })
-    }
-
-
     render() {
-
-        if (!this.state.isRun) return "";
-        if (this.retuls.data.length === 0) return "暂无数据";
-
+        if(this.props.recommendData.length===0) return "";
         return <div className={'liveBox'}>
             <div className={'topBox'}>
                 <div className={'like'}>
@@ -35,25 +28,23 @@ class recommend extends React.Component {
                 </div>
             </div>
             <ul className={'ul'}>
-                {this.retuls.data.map((item, index) => {
-                    let {pic, title, desc, currentPrice, price, vPrice} = item;
+                {this.props.recommendData.map((item, index) => {
+                    let {pic, title, desc, currentPrice, price, vPrice,id} = item;
 
                     return <li className={'li'} key={index}>
-                        <a href={'javascript:;'} className={'bottomBox'}>
+                        <Link className={'bottomBox'} to={`/detail?id=${id}`}>
                             <img src={pic} alt=""/>
                             <div className={'item'}><h3>{title}</h3>
                                 <p>{desc}</p>
                                 <span>¥{price}</span>&nbsp;&nbsp;<span className={'span'}>¥{currentPrice}</span>
                             </div>
                             <div className={'VIP-price'}><span className={'VP'}>会员价</span><span className={'PV'}>¥{vPrice}</span></div>
-                        </a>
+                        </Link>
                     </li>
                 })}
-
-
             </ul>
         </div>
     }
 }
 
-export default connect()(recommend);
+export default connect(state=>({...state.shopCarts}),action.shopCarts)(recommend);

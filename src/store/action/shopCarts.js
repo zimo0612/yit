@@ -1,5 +1,5 @@
 import * as TYPES from '../action-types';
-import {queryShopCartInfo,addShopCart,editShopCart,removeShopCart,payShopCartItems} from '../../API/shopCarts'
+import {queryShopCartInfo,addShopCart,editShopCart,removeShopCart,payShopCartItems,salesCart} from '../../API/shopCarts'
 
 let shopCarts = {
     queryShopCartInfo(state) {
@@ -50,6 +50,15 @@ let shopCarts = {
                 type: TYPES.SHOP_CART_PAY,
                 result,
                 id
+            })
+        }
+    },
+    queryRecommendData(typeId){
+        return async dispatch=>{
+            let result = await salesCart(typeId);
+            dispatch({
+                type:TYPES.QUERY_RECOMMEND_DATA,
+                result
             })
         }
     }

@@ -1,30 +1,36 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {checkLogin,out} from '../../API/personal'
-import {Card,Icon} from 'antd'
+// import {checkLogin,out} from '../../API/personal'
+import {Icon} from 'antd'
 import {withRouter} from 'react-router-dom'
+import action from '../../store/action';
 
 class Person_Center extends React.Component {
     constructor(props, context) {
         super(props, context);
-        this.state = {
+        /*this.state = {
             isLogin:false
-        }
+        }*/
     }
-    async componentWillReceiveProps(){
+    /*async componentWillReceiveProps(){
         let result = await checkLogin(),
             isLogin = parseFloat(result.code) === 0 ? true : false;
         this.setState({isLogin})
 
+    }*/
+
+    componentWillMount(){
+        if(!this.props.isLogin){
+            this.props.checkLogin();
+        }
     }
 
     render() {
         return <div className='Center'>
             <div className="Center-header" onClick={()=>{
-                if (this.state.isLogin){
+                if (this.props.isLogin){
                   return;
                 }
-
             }}>
                 <div className='Center-user' style={{lineHeight:"1.8rem"}}>
                     <Icon type='user' style={{color:"#ccc",fontSize:".8rem" ,width:"1.5rem"}}/>
@@ -46,17 +52,15 @@ class Person_Center extends React.Component {
                     <Icon type='right' className='Center-right3'></Icon>
                 </div>
             </div>
-            {this.state.isLogin?( <div className="Center-footer" onClick={ async ()=>{
-                await out();
-                     this.props.history.push('/personal')
+            {this.props.isLogin?( <div className="Center-footer" onClick={ ()=>{
+                this.props.userLogOut();
+                this.props.history.push('/personal')
             }}>
                 退出登录
             </div>):''}
-
-
         </div>
     }
 
 }
 
-export default withRouter(connect()(Person_Center))
+export default withRouter(connect(state=>({...state.personal}),action.personal)(Person_Center))

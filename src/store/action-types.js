@@ -4,9 +4,11 @@ export const CATEGORY_CLASS='CATEGORY_CLASS';
 export const CATEGORY_SUB_TYPE_PRODUCT='CATEGORY_SUB_TYPE_PRODUCT';
 
 /*个人中心*/
-export const QUERY_USER_INFO='QUERY_USER_INFO';
+export const USER_QUERY_INFO='USER_QUERY_INFO';
 
-export const PERSONAL_QUERY_BASE = "PERSONAL_QUERY_BASE";
+export const USER_CHECK_LOGIN = "USER_CHECK_LOGIN";
+
+export const USER_OUT = "USER_OUT";
 
 /*购物车*/
 export const SHOP_CART_ADD = 'SHOP_CART_ADD';
@@ -15,7 +17,7 @@ export const SHOP_CART_EDIT = 'SHOP_CART_EDIT';
 
 export const SHOP_CART_REMOVE = 'SHOP_CART_REMOVE';
 
-export const QUERY_SHOP_CART='QUERY_SHOP_CART';
+export const QUERY_RECOMMEND_DATA='QUERY_RECOMMEND_DATA';
 
 export const SHOP_CART_INFO = 'SHOP_CART_INFO';
 
@@ -31,13 +33,5 @@ export const HOME_QUERY_KILLPRODUCT='HOME_QUERY_KILLPRODUCT';
 
 export const HOME_QUERY_FILTERPRODUCT='HOME_QUERY_FILTERPRODUCT';
 
-
-
-//点加入购物车之后，通知reducer往redux中存一份
-export const ADD_SHOP='ADD_SHOP';
-
-
-/*商品详情*/
-export const DETAIL_QUERY_PRODUCT = 'DETAIL_QUERY_PRODUCT';
 
 

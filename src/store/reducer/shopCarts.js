@@ -1,7 +1,8 @@
 import * as TYPES from '../action-types';
 
 let INIT_STATE = {
-    shopCartData: []
+    shopCartData: [],
+    recommendData:[]
 };
 export default function shopCarts(state = INIT_STATE, action) {
     state = JSON.parse(JSON.stringify(state));
@@ -49,6 +50,18 @@ export default function shopCarts(state = INIT_STATE, action) {
                     }
                     return item;
                 })
+            }
+            break;
+        case TYPES.QUERY_RECOMMEND_DATA:
+            if(parseFloat(action.result.code)===0){
+                //=>打乱顺序存
+                state.recommendData = action.result.data.sort((a,b)=>{
+                    let data = Math.random();
+                    if(data>0.5){
+                        return a.id-b.id;
+                    }
+                    return b.id-a.id;
+                });
             }
             break;
     }

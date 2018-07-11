@@ -2,7 +2,11 @@ import axios from './index'
 
 //登录
 export function login(payload) {
-    return axios.post('/personal/login',payload)
+    let {name,password} = payload;
+    return axios.post("/personal/login",{
+        name,
+        password
+    })
 }
 //注册
 export function register(payload) {

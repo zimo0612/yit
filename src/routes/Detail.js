@@ -27,10 +27,17 @@ class Detail extends React.Component {
         }
     }
 
+    componentDidMount(){
+        console.log(this.props);
+        if(!this.props.isLogin){
+            this.props.checkLogin();
+        }
+    }
+
     render() {
         let {result, n} = this.state;
         if (result.data === undefined) return '';
-        let {pic, title, desc, price, currentPrice, vPrice,id} = result.data[0];
+        let {pic, title, desc, price, vPrice,id} = result.data[0];
         this.id = id;
 
         return <div className={'DetailBox'}>
@@ -63,14 +70,12 @@ class Detail extends React.Component {
                 <a className="service"><Icon type="customer-service"/><p>客服</p></a>
                 <Link to={'/Home'} className={'goHome'}><Icon type={'home'}/><p>首页</p></Link>
                 <Link to={'/ShopCart'} className={'goShopCart'}><Icon type="shopping-cart"/><p>购物车</p></Link>
-                <a className={'take'} onClick={this.handleConfirm}>加入购物车</a>
-                <a href="javascript:;" className={'buy-it'}>立即购买</a>
+                <a href={'javascript:;'} className={'take'} onClick={this.handleConfirm}>加入购物车</a>
+                <a href={'javascript:;'} className={'buy-it'} >立即购买</a>
             </div>
-
             <div className="mask" ref={'mask'} onClick={this.close}>
 
             </div>
-
             <div className={'confirm'} ref={'confirm'} style={{display: 'none'}}>
                 <Icon type="close" className={'close-Btn'} onClick={this.close}/>
                 <div className="confirm-info">
@@ -113,9 +118,13 @@ class Detail extends React.Component {
     };
 
     handleConfirm = ev => {
-        let {mask, confirm} = this.refs;
-        mask.style.display = 'block';
-        confirm.style.display = 'block'
+        if(this.props.isLogin){
+            let {mask, confirm} = this.refs;
+            mask.style.display = 'block';
+            confirm.style.display = 'block';
+        }else{
+            this.props.history.push('/gologin');
+        }
     };
 
     plus = ev => {
@@ -138,4 +147,4 @@ class Detail extends React.Component {
 
 }
 
-export default withRouter(connect(state=>({...state.shopCarts}),action.shopCarts)(Detail));
+export default withRouter(connect(state=>({...state.shopCarts,...state.personal}),{...action.personal,...action.shopCarts})(Detail));
